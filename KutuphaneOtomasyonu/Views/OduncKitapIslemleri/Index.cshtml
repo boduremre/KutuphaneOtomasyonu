@@ -1,0 +1,101 @@
+﻿@model IEnumerable<KutuphaneOtomasyonu.Models.OduncKitap>
+
+@{
+    ViewData["Title"] = "Ödünç Verilen Kitaplar Listesi";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Ödünç Verilen Kitaplar Listesi</div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <table id="tblOduncVerilenKitaplar" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Kitap.KitapId) / @Html.DisplayNameFor(model => model.Kitap.Barkod) / @Html.DisplayNameFor(model => model.Kitap.Ad) / Yazar / @Html.DisplayNameFor(model => model.Kitap.Yayinevi.Adi)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.User)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AlisTarihi)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GetirecegiTarih)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GetirdigiTarih)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kitap.KitapId) / @Html.DisplayFor(modelItem => item.Kitap.Barkod) / @Html.DisplayFor(modelItem => item.Kitap.Ad) / @Html.DisplayFor(modelItem => item.Kitap.Yazar.Ad) @Html.DisplayFor(modelItem => item.Kitap.Yazar.Soyad) / @Html.DisplayFor(modelItem => item.Kitap.Yayinevi.Adi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.Adi) @Html.DisplayFor(modelItem => item.User.Soyadi) (@Html.DisplayFor(modelItem => item.User.Email))
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AlisTarihi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GetirecegiTarih)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GetirdigiTarih)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">Düzenle</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Detay</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tblOduncVerilenKitaplar').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/tr.json'
+                },
+                dom: 'Bfrtip',
+                autoWidth: true,
+                buttons: [ //http://jsfiddle.net/andrew_safwat/cn1n060L/
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

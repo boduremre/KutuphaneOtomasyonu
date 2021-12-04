@@ -1,0 +1,119 @@
+﻿@model IEnumerable<KutuphaneOtomasyonu.Models.Kitap>
+
+@{
+    ViewData["Title"] = "Kitaplar";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Kitaplar</div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <table id="tblKitaplar" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ad)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.SayfaSayisi)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Adet)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.BaskiYili)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Dil)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Yazar)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Kategori)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Yayinevi)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SayfaSayisi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Adet)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BaskiYili)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Dil)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Yazar.Ad) @Html.DisplayFor(modelItem => item.Yazar.Soyad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Yayinevi.Adi)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.KitapId" class="btn btn-info btn-sm">Düzenle</a>
+                                        <a asp-action="Details" asp-route-id="@item.KitapId" class="btn btn-primary btn-sm">Detay</a>
+                                        <a asp-action="Delete" asp-route-id="@item.KitapId" class="btn btn-danger btn-sm">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tblKitaplar').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/tr.json'
+                },
+                dom: 'Bfrtip',
+                autoWidth: true,
+                buttons: [ //http://jsfiddle.net/andrew_safwat/cn1n060L/
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6, 7]
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+}

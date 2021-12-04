@@ -1,0 +1,60 @@
+﻿@model KutuphaneOtomasyonu.Models.Yazar
+
+@{
+    ViewData["Title"] = "Yazar Ekle";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/plugins/html5-editor/bootstrap-wysihtml5.css" />
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Yazar Ekle</div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Ad" class="control-label"></label>
+                            <input asp-for="Ad" class="form-control" />
+                            <span asp-validation-for="Ad" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Soyad" class="control-label"></label>
+                            <input asp-for="Soyad" class="form-control" />
+                            <span asp-validation-for="Soyad" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Biyografi" class="control-label"></label>
+                            <textarea asp-for="Biyografi" class="form-control textarea_editor" rows="15" placeholder="Biyografi"></textarea>
+                            <span asp-validation-for="Biyografi" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ResimUrl" class="control-label"></label>
+                            <input asp-for="ResimUrl" class="form-control" />
+                            <span asp-validation-for="ResimUrl" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Ekle" class="btn btn-info" />
+                            <a asp-action="Index" class="btn btn-danger">İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <!-- wysuhtml5 Plugin JavaScript -->
+    <script src="~/plugins/html5-editor/wysihtml5-0.3.0.js"></script>
+    <script src="~/plugins/html5-editor/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.textarea_editor').wysihtml5();
+        });
+    </script>
+}

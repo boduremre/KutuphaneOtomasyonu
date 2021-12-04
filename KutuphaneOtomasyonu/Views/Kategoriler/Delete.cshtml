@@ -1,0 +1,23 @@
+﻿@model KutuphaneOtomasyonu.Models.Kategori
+
+@{
+    ViewData["Title"] = "Kategori Sil";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Kategori Sil</div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <p>Bu kategoriyi <b>(@Html.DisplayFor(model => model.KategoriAdi))</b> silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!!!</p>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="KategoriId" />
+                        <input type="submit" value="Sil" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-info">İptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

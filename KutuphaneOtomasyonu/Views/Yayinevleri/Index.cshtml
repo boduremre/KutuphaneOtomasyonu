@@ -1,0 +1,58 @@
+﻿@model IEnumerable<KutuphaneOtomasyonu.Models.Yayinevi>
+
+@{
+    ViewData["Title"] = "Yayınevleri";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Yayınevleri</div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <table id="tblYayinevleri" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Adi)
+                                </th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.YayineviId)</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Adi)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.YayineviId" class="btn btn-info btn-sm">Düzenle</a>
+                                        <a asp-action="Delete" asp-route-id="@item.YayineviId" class="btn btn-danger btn-sm">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tblYayinevleri').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/tr.json'
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+}

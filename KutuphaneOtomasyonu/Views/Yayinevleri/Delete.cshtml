@@ -1,0 +1,23 @@
+﻿@model KutuphaneOtomasyonu.Models.Yayinevi
+
+@{
+    ViewData["Title"] = "Yayınevi Sil";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Yayınevi Sil</div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <p>Bu Yayınevini <b>(@Html.DisplayFor(model => model.Adi))</b> silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!!!</p>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="YayineviId" />
+                        <input type="submit" value="Sil" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-info">İptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

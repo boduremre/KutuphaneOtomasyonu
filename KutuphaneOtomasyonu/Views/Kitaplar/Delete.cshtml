@@ -1,0 +1,110 @@
+﻿@model KutuphaneOtomasyonu.Models.Kitap
+
+@{
+    ViewData["Title"] = "Kitap Sil";
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Kitap Sil</div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <p>Bu kitabı <b>(@Html.DisplayFor(model => model.Ad))</b> silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!!!</p>
+
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Ad)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Ad)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.OzgunAd)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.OzgunAd)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.SayfaSayisi)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.SayfaSayisi)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Adet)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Adet)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.BaskiYili)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.BaskiYili)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Dil)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Dil)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Barkod)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Barkod)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ISBN)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ISBN)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Ceviren)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Ceviren)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.TeminBicimi)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.TeminBicimi)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.EdinmeBedeli)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.EdinmeBedeli)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Yazar)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Yazar.Ad)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Kategori)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Kategori.KategoriAdi)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Yayinevi)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Yayinevi.Adi)
+                        </dd>
+                    </dl>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="KitapId" />
+                        <input type="submit" value="Sil" class="btn btn-danger" />
+                        <a asp-action="Index" class="btn btn-info">İptal</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,156 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+}
+<!-- .row -->
+<div class="row">
+    <div class="col-lg-3 col-sm-3 col-xs-12">
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Toplam Üye Sayısı</h3>
+            <ul class="list-inline two-part">
+                <li>
+                    <div id="sparklinedash"></div>
+                </li>
+                <li class="text-right"><i class="ti-user text-success"></i> <span class="counter text-success">@ViewBag.UyeSayisi</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-3 col-xs-12">
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Toplam Kitap Sayısı</h3>
+            <ul class="list-inline two-part">
+                <li>
+                    <div id="sparklinedash2"></div>
+                </li>
+                <li class="text-right"><i class="ti-book text-purple"></i> <span class="counter text-purple">@ViewBag.KitapSayisi</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-3 col-xs-12">
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Ödünç Verilen Kitap Sayısı</h3>
+            <ul class="list-inline two-part">
+                <li>
+                    <div id="sparklinedash3"></div>
+                </li>
+                <li class="text-right"><i class="ti-gift text-info"></i> <span class="counter text-info">@ViewBag.OduncKitapSayisi</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-3 col-xs-12">
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Geciken Kitap Sayısı</h3>
+            <ul class="list-inline two-part">
+                <li>
+                    <div id="sparklinedash4"></div>
+                </li>
+                <li class="text-right"><i class="ti-alert text-danger"></i> <span class="text-danger">@ViewBag.GecikenKitapSayisi</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--/.row -->
+<!-- .row -->
+<div class="row">
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box">
+            <h3 class="box-title">Son Kayıt Olan Üyeler</h3>
+            <div class="steamline">
+                @foreach (var uye in (IEnumerable<AppUser>)ViewData["SonKayitOlan10Uye"])
+                {
+                    <div class="sl-item">
+                        <div class="sl-left"> <img class="img-circle" alt="user" src="~/images/users/default.png"> </div>
+                        <div class="sl-right">
+                            <div>
+                                <a href="javascript:void()">@String.Format("{0} {1}", uye.Adi, uye.Soyadi)</a>
+                                <span class="sl-date">@String.Format("{0} {1}", uye.KayitTarihi.ToShortDateString(), uye.KayitTarihi.ToShortTimeString())</span>
+                            </div>
+                            <p><a asp-action="Details" asp-controller="Uyeler" asp-route-id="@uye.Id" class="btn btn-link btn-xs">Profili Görüntüle</a></p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box">
+            <h3 class="box-title">Son Kaydedilen Kitaplar</h3>
+            <ul class="feeds">
+                @foreach (var kitap in (IEnumerable<Kitap>)ViewData["SonKaydedilenKitaplar"])
+                {
+                    <li>
+                        @if (kitap.Kategori.KategoriAdi == "Roman")
+                        {
+                            <div class="bg-info"><i class="fa fa-book text-white"></i></div>
+                        }
+                        else if (kitap.Kategori.KategoriAdi == "Çocuk")
+                        {
+                            <div class="bg-warning"><i class="fa fa-book text-white"></i></div>
+                        }
+                        else
+                        {
+                            <div class="bg-purple"><i class="fa fa-book text-white"></i></div>
+                        }
+                        @kitap.Ad<span class="text-muted">@kitap.Yazar.Ad @kitap.Yazar.Soyad</span>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <div class="white-box">
+            <div id="calendar"></div>
+        </div>
+    </div>
+</div>
+<!--/.row -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="white-box">
+            <h3 class="box-title">Ödünç Verilen Kitaplar Listesi (Son 10 Kitap)</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kitap Adı</th>
+                            <th>Üye</th>
+                            <th>Alış Tarihi</th>
+                            <th>Getireceği Tarih</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var oduncKitap in (IEnumerable<OduncKitap>)ViewData["OduncVerilen10Kitap"])
+                        {
+                            <tr>
+                                <td>@oduncKitap.Id</td>
+                                <td><a href="javascript:void(0)" class="btn-link">@oduncKitap.Kitap.Ad</a></td>
+                                <td>@oduncKitap.User.Adi @oduncKitap.User.Soyadi</td>
+                                <td>@oduncKitap.AlisTarihi</td>
+                                <td>@oduncKitap.GetirecegiTarih</td>
+                                <td>
+                                    @{TimeSpan arasindakiGunler = DateTime.Now - oduncKitap.GetirecegiTarih;}
+                                    @if (oduncKitap.GetirdigiTarih == null && oduncKitap.GetirecegiTarih < DateTime.Now)
+                                    {
+                                        <div class="label label-table label-danger">
+                                            @Math.Floor(arasindakiGunler.TotalDays).ToString() Gün Gecikti
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="label label-table label-success">
+                                            @Math.Abs(Math.Floor(arasindakiGunler.TotalDays)).ToString() Gün Kaldı
+                                        </div>
+                                    }
+                                </td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

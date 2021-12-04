@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<nav class="navbar navbar-default navbar-static-top m-b-0">
+    <div class="navbar-header">
+        <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+        <div class="top-left-part"><a class="logo" asp-area="" asp-controller="Home" asp-action="Index"><b><img src="~/images/eliteadmin-logo.png" alt="home" /></b><span class="hidden-xs"><img src="~/images/eliteadmin-text.png" alt="home" /></span></a></div>
+        <ul class="nav navbar-top-links navbar-left hidden-xs">
+            <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
+            <li>
+                <form role="search" class="app-search hidden-xs">
+                    <input type="text" placeholder="Ara..." class="form-control">
+                    <a href=""><i class="fa fa-search"></i></a>
+                </form>
+            </li>
+        </ul>
+        <ul class="nav navbar-top-links navbar-right pull-right">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="dropdown">
+                    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="~/images/users/default.png" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">@User.Identity.Name</b> </a>
+                    <ul class="dropdown-menu dropdown-user animated flipInY">
+                        <li><a asp-action="Profile" asp-controller="Admin"><i class="ti-user"></i> Profil</a></li>
+                        <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                        <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Admin", new { area = "" })">
+                                <button type="submit" class="nav-link btn btn-link text-dark"><i class="fa fa-power-off"></i> Çıkış</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+            }
+            else
+            {
+                <li class="dropdown">
+                    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="~/images/users/genu.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Kullanıcı</b> </a>
+                    <ul class="dropdown-menu dropdown-user animated flipInY">
+                        <li><a asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-sign-in"></i> Giriş</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-user-plus"></i> Kayıt Ol</a></li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- /.navbar-header -->
+    <!-- /.navbar-top-links -->
+    <!-- /.navbar-static-side -->
+</nav>
