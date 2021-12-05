@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label asp-for="TCKimlik" class="col-md-12"></label>
                             <div class="col-md-12">
-                                <input asp-for="TCKimlik" class="form-control form-control-line" />
+                                <input asp-for="TCKimlik" class="form-control form-control-line" data-mask="99999999999" />
                                 <span asp-validation-for="TCKimlik" class="text-danger"></span>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label asp-for="PhoneNumber" class="col-md-12">Telefon</label>
                             <div class="col-md-12">
-                                <input asp-for="PhoneNumber" class="form-control form-control-line">
+                                <input asp-for="PhoneNumber" class="form-control form-control-line" data-mask="(999) 999-9999">
                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
                             </div>

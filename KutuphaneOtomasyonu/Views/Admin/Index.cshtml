@@ -126,8 +126,8 @@
                                 <td>@oduncKitap.Id</td>
                                 <td><a asp-action="Index" asp-controller="OduncKitapIslemleri" class="btn-link">@oduncKitap.Kitap.Ad</a></td>
                                 <td>@oduncKitap.User.Adi @oduncKitap.User.Soyadi</td>
-                                <td>@oduncKitap.AlisTarihi</td>
-                                <td>@oduncKitap.GetirecegiTarih</td>
+                                <td>@oduncKitap.AlisTarihi.ToShortDateString()</td>
+                                <td>@oduncKitap.GetirecegiTarih.ToShortDateString()</td>
                                 <td>
                                     @{TimeSpan arasindakiGunler = DateTime.Now - oduncKitap.GetirecegiTarih;}
                                     @if (oduncKitap.GetirdigiTarih == null && oduncKitap.GetirecegiTarih < DateTime.Now)
