@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Barkod" class="control-label"></label>
-                            <input asp-for="Barkod" class="form-control" maxlength="13" />
+                            <input asp-for="Barkod" class="form-control" maxlength="13" data-mask="9999999999999" />
                             <span asp-validation-for="Barkod" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -84,8 +84,8 @@
                             <span asp-validation-for="DemirbasNo" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="YerBilgisi" class="control-label"></label>
-                            <input asp-for="YerBilgisi" class="form-control" />
+                            <label asp-for="YerBilgisi" class="control-label"></label> (B: Bölüm, R: Raf, S: Sıra, <a href="https://www.library.illinois.edu/infosci/research/guides/dewey/" target="_blank">Detaylı Bilgi</a>)
+                            <input asp-for="YerBilgisi" class="form-control" data-mask="B999-R999-S999" />
                             <span asp-validation-for="YerBilgisi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
