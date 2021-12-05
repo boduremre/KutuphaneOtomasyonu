@@ -37,43 +37,49 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Yayinevi)
                                 </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.YerBilgisi)
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Ad)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.SayfaSayisi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Adet)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.BaskiYili)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Dil)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Yazar.Ad) @Html.DisplayFor(modelItem => item.Yazar.Soyad)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Yayinevi.Adi)
-                                    </td>
-                                    <td>
-                                        <a asp-action="Edit" asp-route-id="@item.KitapId" class="btn btn-info btn-sm">Düzenle</a>
-                                        <a asp-action="Details" asp-route-id="@item.KitapId" class="btn btn-primary btn-sm">Detay</a>
-                                        <a asp-action="Delete" asp-route-id="@item.KitapId" class="btn btn-danger btn-sm">Sil</a>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SayfaSayisi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Adet)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BaskiYili)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Dil)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Yazar.Ad) @Html.DisplayFor(modelItem => item.Yazar.Soyad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Yayinevi.Adi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.YerBilgisi)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.KitapId" class="btn btn-info btn-sm">Düzenle</a>
+                                    <a asp-action="Details" asp-route-id="@item.KitapId" class="btn btn-primary btn-sm">Detay</a>
+                                    <a asp-action="Delete" asp-route-id="@item.KitapId" class="btn btn-danger btn-sm">Sil</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
