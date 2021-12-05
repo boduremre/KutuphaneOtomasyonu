@@ -32,8 +32,8 @@ namespace KutuphaneOtomasyonu.Controllers
             ViewData["OduncKitapSayisi"] = _context.OduncKitaplar.Count();
             ViewData["GecikenKitapSayisi"] = _context.OduncKitaplar.Where(x => x.GetirdigiTarih == null && x.GetirecegiTarih < DateTime.Now).Count();
             ViewData["SonKaydedilenKitaplar"] = _context.Kitaplar.Include(o => o.Yazar).Include(o => o.Kategori).OrderByDescending(x => x.KitapId).Take(5).ToList();
-            ViewData["OduncVerilen10Kitap"] = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Take(10).ToList();
-            ViewData["SonKayitOlan10Uye"] = _context.Users.Take(5).OrderByDescending(x=>x.KayitTarihi).ToList();
+            ViewData["OduncVerilen10Kitap"] = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Where(x => x.GetirdigiTarih == null).Take(10).ToList();
+            ViewData["SonKayitOlan10Uye"] = _context.Users.Take(5).OrderByDescending(x => x.KayitTarihi).ToList();
 
             return View();
         }
@@ -61,7 +61,7 @@ namespace KutuphaneOtomasyonu.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    
+
                 }
 
                 return RedirectToAction("Profile");
