@@ -22,7 +22,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // GET: OduncKitapIslemleri
         public async Task<IActionResult> Index()
         {
-            var kutuphaneDbContext = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Include(o => o.Kitap.Yazar).Include(o => o.Kitap.Yayinevi);
+            var kutuphaneDbContext = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Include(o => o.Kitap.Yazar).Include(o => o.Kitap.Yayinevi).Where(x => x.GetirdigiTarih == null);
             return View(await kutuphaneDbContext.ToListAsync());
         }
 
@@ -49,10 +49,11 @@ namespace KutuphaneOtomasyonu.Controllers
         // GET: OduncKitapIslemleri/Create
         public IActionResult Create()
         {
-            ViewData["KitapId"] = new SelectList(_context.Kitaplar, "KitapId", "Ad");
-            //ViewData["UyeId"] = new SelectList(_context.Uyeler, "UyeId", "Uye");
+            // adedi 0'dan büyük olanlar
+            var kitaplar = _context.Kitaplar.Select(p => new { p.KitapId, Ad = p.Ad, Adet = p.Adet }).Where(y => y.Adet > 0);
+            ViewData["KitapId"] = new SelectList(kitaplar, "KitapId", "Ad");
 
-            // uye bilgileri getiriliyor
+            // kullanıcı/uye bilgileri getiriliyor
             var q = _context.Users.Select(p => new { p.Id, AdSoyad = p.Adi + " " + p.Soyadi + " (" + p.Email + ")" });
             ViewData["UserId"] = new SelectList(q, "Id", "AdSoyad");
             return View();
@@ -72,7 +73,9 @@ namespace KutuphaneOtomasyonu.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["KitapId"] = new SelectList(_context.Kitaplar, "KitapId", "Ad", oduncKitap.KitapId);
+            // adedi 0'dan büyük olanlar
+            var kitaplar = _context.Kitaplar.Select(p => new { p.KitapId, Ad = p.Ad, Adet = p.Adet }).Where(y => y.Adet > 0);
+            ViewData["KitapId"] = new SelectList(kitaplar, "KitapId", "Ad");
 
             var q = _context.Users.Select(p => new { p.Id, AdSoyad = p.Adi + " " + p.Soyadi + " (" + p.Email + ")" });
             ViewData["UserId"] = new SelectList(q, "Id", "AdSoyad");
@@ -164,6 +167,22 @@ namespace KutuphaneOtomasyonu.Controllers
             _context.OduncKitaplar.Remove(oduncKitap);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        public JsonResult GetirdiOlarakIsaretleJSON(int GetirilenKitapId)
+        {
+            var oduncKitap = _context.OduncKitaplar.Find(GetirilenKitapId);
+            oduncKitap.GetirdigiTarih = System.DateTime.Now;
+            int status = _context.SaveChanges();
+            if (status > 0)
+            {
+                return Json("true");
+            }
+            else
+            {
+                return Json("false");
+            }
         }
 
         private bool OduncKitapExists(int id)
