@@ -60,6 +60,14 @@ namespace KutuphaneOtomasyonu.Models
         DateTime KayitTarihi { get; set; } = DateTime.Now;
 
         [Required]
+        [Display(Name = "Demirbaş")]
+        public string DemirbasNo { get; set; }
+
+        [Required]
+        [Display(Name = "Yer Bilgisi")]
+        public string YerBilgisi { get; set; }
+
+        [Required]
         [Display(Name = "Yazar")]
         public int YazarId { get; set; }
         public Yazar Yazar { get; set; }
