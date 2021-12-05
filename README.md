@@ -27,3 +27,8 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 ### Proje Ekibi
 - Emre Bodur B141210306 @boduremre<br />
 - Sadık Senai G191210300 @ssenai
+
+### Task List
+- [ ] WebApi eklenecek.
+- [ ] Çoklu Dil desteği eklenecek.
+- [ ] DbInitializer eklenecek. 
