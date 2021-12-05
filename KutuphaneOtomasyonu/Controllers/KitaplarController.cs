@@ -63,7 +63,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("KitapId,Ad,OzgunAd,SayfaSayisi,Adet,BaskiYili,Dil,Barkod,ISBN,Ceviren,TeminBicimi,EdinmeBedeli,YazarId,KategoriId,YayineviId,KapakResmi")] Kitap kitap)
+        public async Task<IActionResult> Create([Bind("KitapId,Ad,OzgunAd,SayfaSayisi,Adet,BaskiYili,Dil,Barkod,ISBN,Ceviren,TeminBicimi,EdinmeBedeli,YazarId,KategoriId,YayineviId,KapakResmi,DemirbasNo,YerBilgisi")] Kitap kitap)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("KitapId,Ad,OzgunAd,SayfaSayisi,Adet,BaskiYili,Dil,Barkod,ISBN,Ceviren,TeminBicimi,EdinmeBedeli,YazarId,KategoriId,YayineviId,KapakResmi")] Kitap kitap)
+        public async Task<IActionResult> Edit(int id, [Bind("KitapId,Ad,OzgunAd,SayfaSayisi,Adet,BaskiYili,Dil,Barkod,ISBN,Ceviren,TeminBicimi,EdinmeBedeli,YazarId,KategoriId,YayineviId,KapakResmi,DemirbasNo,YerBilgisi")] Kitap kitap)
         {
             if (id != kitap.KitapId)
             {
