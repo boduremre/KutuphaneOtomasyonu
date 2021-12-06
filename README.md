@@ -20,6 +20,9 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 - Admin kullanıcısı için sisteme giriş bilgileri:
   - Kullanıcı adı : b141210306@sakarya.edu.tr veya g191210300@sakarya.edu.tr
   - Şifre: 123
+- Üye kullanıcısı için sisteme giriş bilgileri:
+  - Kullanıcı adı : ahmettuna@emrebodur.com
+  - Şifre: 123
 - Authorization doğru bir şekilde yapılmalıdır.
 - Çok dilli (En azından Türkçe/İngilizce) olmalıdır.
 - Projede yer alan veri tabanınındaki uygun verilerden en az bir api hizmeti sunulmalıdır.
@@ -31,4 +34,4 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 ### Task List
 - [ ] WebApi eklenecek.
 - [ ] Çoklu Dil desteği eklenecek.
-- [ ] DbInitializer eklenecek. 
+- [x] DbInitializer eklenecek. 
