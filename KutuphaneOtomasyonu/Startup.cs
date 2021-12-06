@@ -30,8 +30,20 @@ namespace KutuphaneOtomasyonu
         {
             services.AddDbContext<KutuphaneDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                    Configuration.GetConnectionString("DefaultConnection"))
+                );
+
+            // paralonýn sadece sayýlardan ve 3 karakterden oluþmasý saðlandý.
+            services.AddDefaultIdentity<AppUser>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 3;
+                options.Password.RequireDigit = true;
+                options.Password.RequiredUniqueChars = 0;
+            })
                 .AddRoles<AppRole>()
                 .AddEntityFrameworkStores<KutuphaneDbContext>();
 
@@ -69,6 +81,11 @@ namespace KutuphaneOtomasyonu
                     pattern: "{controller=Admin}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            //Seed database
+            AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
+            AppDbInitializer.SeedOduncKitap(app);
         }
     }
 }
