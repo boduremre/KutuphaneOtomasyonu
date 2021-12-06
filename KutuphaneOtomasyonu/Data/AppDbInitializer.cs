@@ -253,7 +253,7 @@ namespace KutuphaneOtomasyonu.Data
                             TeminBicimi = "Satın Alma",
                             DemirbasNo = "0000001",
                             ISBN = "9786054985326",
-                            KapakResmi = null,
+                            KapakResmi = "https://img.kitapyurdu.com/v1/getImage/fn:9950059/wh:true/wi:220",
                             YerBilgisi = "B840-R5-S8"
                         }, new Kitap()
                         {
@@ -272,8 +272,8 @@ namespace KutuphaneOtomasyonu.Data
                             TeminBicimi = "Satın Alma",
                             DemirbasNo = "0000002",
                             ISBN = "9786054985327",
-                            KapakResmi = null,
-                            YerBilgisi = "B840-R5-S9"
+                            KapakResmi = "https://img.kitapyurdu.com/v1/getImage/fn:11468334/wh:true/wi:220",
+                            YerBilgisi = "B840-R5-S9",                            
                         }, new Kitap()
                         {
                             Ad = "Dönüşüm",
@@ -282,7 +282,7 @@ namespace KutuphaneOtomasyonu.Data
                             Barkod = "9786054985323",
                             SayfaSayisi = 102,
                             BaskiYili = 2019,
-                            Ceviren = "",
+                            Ceviren = "Ahmet Cemal",
                             KategoriId = context.Kategoriler.Where(x=>x.KategoriAdi == "Edebiyat").Select(s => s.KategoriId).First(),
                             YazarId = context.Yazarlar.Where(x=>x.Ad == "Franz").Select(s=>s.YazarId).First(),
                             YayineviId = context.Yayinevleri.Where(x=>x.Adi == "Can Yayınları").Select(s=>s.YayineviId).First(),
@@ -291,7 +291,7 @@ namespace KutuphaneOtomasyonu.Data
                             TeminBicimi = "Satın Alma",
                             DemirbasNo = "0000003",
                             ISBN = "9786054985323",
-                            KapakResmi = null,
+                            KapakResmi = "https://img.kitapyurdu.com/v1/getImage/fn:11482567/wh:true/wi:220",
                             YerBilgisi = "B840-R5-S7"
                         },
                     });
