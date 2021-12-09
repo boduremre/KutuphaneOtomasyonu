@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")]  //chrome üzerindenapi kullanmak için.
     [ApiController]
     public class YazarlarApiController : ControllerBase
     {
