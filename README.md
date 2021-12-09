@@ -35,3 +35,7 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 - [ ] WebApi eklenecek.
 - [ ] Çoklu Dil desteği eklenecek.
 - [x] DbInitializer eklenecek. 
+
+### Api Eklenmesi
+- YazarlarController için YazarlarApiController apisi olusturuldu.
+- KitaplarController için KitaplarApiController apisi olusturuldu.
