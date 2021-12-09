@@ -32,10 +32,7 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 - Sadık Senai G191210300 @ssenai
 
 ### Task List
-- [ ] WebApi eklenecek.
+- [X] WebApi eklenecek.
 - [ ] Çoklu Dil desteği eklenecek.
 - [x] DbInitializer eklenecek. 
 
-### Api Eklenmesi
-- YazarlarController için YazarlarApiController apisi olusturuldu.
-- KitaplarController için KitaplarApiController apisi olusturuldu.
