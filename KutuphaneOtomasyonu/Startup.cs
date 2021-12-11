@@ -2,17 +2,10 @@ using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace KutuphaneOtomasyonu
 {
@@ -33,7 +26,7 @@ namespace KutuphaneOtomasyonu
                     Configuration.GetConnectionString("DefaultConnection"))
                 );
 
-            // paralonýn sadece sayýlardan ve 3 karakterden oluþmasý saðlandý.
+            // paralonin sadece sayilardan olusmasi saglandi
             services.AddDefaultIdentity<AppUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
@@ -47,7 +40,15 @@ namespace KutuphaneOtomasyonu
                 .AddRoles<AppRole>()
                 .AddEntityFrameworkStores<KutuphaneDbContext>();
 
-            services.AddControllersWithViews();
+            // api uzerinden kitaplar getirildiginde yazar, yayinevi ve kategori bilgisi
+            // json icine eklenemiyordu cunku json verisinin derinligi izin vermiyordu
+            // newtonjson ile bu sorun giderildi
+            services.AddControllersWithViews().AddNewtonsoftJson(
+                options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
+
             services.AddRazorPages();
             services.AddAuthorization();
         }
@@ -83,6 +84,7 @@ namespace KutuphaneOtomasyonu
             });
 
             //Seed database
+            //ornek veriler veritabanina kaydediliyor
             AppDbInitializer.Seed(app);
             AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
             AppDbInitializer.SeedOduncKitap(app);
