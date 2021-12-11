@@ -1,16 +1,15 @@
 ﻿using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace KutuphaneOtomasyonu.Controllers
 {
-    [Route("api/[controller]")]  //chrome üzerindenapi kullanmak için.
+    [Route("api/kitaplar")]  //chrome üzerindenapi kullanmak için.
     [ApiController]
     public class KitaplarApiController : ControllerBase
     {
@@ -27,7 +26,8 @@ namespace KutuphaneOtomasyonu.Controllers
         [HttpGet]
         public List<Kitap> Get()
         {
-            var k = _context.Kitaplar.ToList();
+            // https://stackoverflow.com/questions/59199593/net-core-3-0-possible-object-cycle-was-detected-which-is-not-supported
+            var k = _context.Kitaplar.Include(k => k.Kategori).Include(x => x.Yayinevi).Include(y => y.Yazar).ToList();
             return k;
         }
 
@@ -35,7 +35,7 @@ namespace KutuphaneOtomasyonu.Controllers
         [HttpGet("{id}")]
         public Kitap Get(int id)
         {
-            var k = _context.Kitaplar.FirstOrDefault(x => x.KitapId == id);
+            var k = _context.Kitaplar.Include(k => k.Kategori).Include(x => x.Yayinevi).Include(y => y.Yazar).FirstOrDefault(x => x.KitapId == id);
             return k;
         }
 
