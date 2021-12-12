@@ -56,7 +56,7 @@ namespace KutuphaneOtomasyonu.Controllers
         public IActionResult Create()
         {
             // adedi 0'dan büyük olanlar
-            var kitaplar = _context.Kitaplar.Select(p => new { p.KitapId, Ad = p.Ad, Adet = p.Adet }).Where(y => y.Adet > 0);
+            var kitaplar = _context.Kitaplar.Select(p => new { p.KitapId, Ad = p.Ad, Adet = p.Adet, OduncAdet = p.OduncAdet }).Where(y => y.Adet > 0 && y.Adet > y.OduncAdet);
             ViewData["KitapId"] = new SelectList(kitaplar, "KitapId", "Ad");
 
             // kullanıcı/uye bilgileri getiriliyor
@@ -74,6 +74,16 @@ namespace KutuphaneOtomasyonu.Controllers
         {
             if (ModelState.IsValid)
             {
+                //eğer ödünç verilen kitap sayısı toplam adette eşit veya fazla ise hata ver
+                //çünkü bu kitaptan başka kopya yok.
+                var kitap = _context.Kitaplar.FindAsync(oduncKitap.KitapId).Result;
+                if (kitap.Adet == kitap.OduncAdet || kitap.Adet <= kitap.OduncAdet)
+                {
+                    return NotFound();
+                }
+
+                // odunc verilen kitap sayisini arttır.
+                kitap.OduncAdet++;
                 _context.Add(oduncKitap);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -160,6 +170,8 @@ namespace KutuphaneOtomasyonu.Controllers
             int status = _context.SaveChanges();
             if (status > 0)
             {
+                _context.Kitaplar.Find(oduncKitap.KitapId).OduncAdet--;
+                _context.SaveChanges();
                 return Json("true");
             }
             else
