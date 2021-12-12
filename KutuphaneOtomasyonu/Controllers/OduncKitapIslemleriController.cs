@@ -152,7 +152,6 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(oduncKitap);
         }
 
-
         [HttpPost]
         public JsonResult GetirdiOlarakIsaretleJSON(int GetirilenKitapId)
         {
