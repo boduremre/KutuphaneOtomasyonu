@@ -80,9 +80,31 @@
                     contentType: 'application/x-www-form-urlencoded', //https://stackoverflow.com/questions/55054512/ajax-post-int-parameter-in-asp-net-core
                     success: function (response) {
                         if (response == "true") {
-                            alert("Kitap Getirildi Olarak İşaretlendi!");
+                            //swal ile ekrana mesaj veriyoruz.
+                            swal({
+                                title: "Başarılı",
+                                text: "Kitap Getirildi Olarak İşaretlendi!",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonColor: "green",
+                                confirmButtonText: "Tamam",
+                                closeOnConfirm: false
+                            }, function () {
+                                location.reload();
+                            });
                         } else {
-                            alert("Kitap Getirildi Olarak İşaretlenemedi!");
+                            //swal ile ekrana mesaj veriyoruz.
+                            swal({
+                                title: "Başarısız!",
+                                text: "Kitap Getirildi Olarak İşaretlenemedi!",
+                                type: "error",
+                                showCancelButton: false,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Tamam",
+                                closeOnConfirm: false
+                            }, function () {
+                                location.reload();
+                            });
                         }
                     }
                 });
