@@ -26,6 +26,12 @@ namespace KutuphaneOtomasyonu.Controllers
             return View(await kutuphaneDbContext.ToListAsync());
         }
 
+        public async Task<IActionResult> List()
+        {
+            var kutuphaneDbContext = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Include(o => o.Kitap.Yazar).Include(o => o.Kitap.Yayinevi).Where(x => x.GetirdigiTarih != null);
+            return View(await kutuphaneDbContext.ToListAsync());
+        }
+
         // GET: OduncKitapIslemleri/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -96,8 +102,12 @@ namespace KutuphaneOtomasyonu.Controllers
             {
                 return NotFound();
             }
+
             ViewData["KitapId"] = new SelectList(_context.Kitaplar, "KitapId", "Ad", oduncKitap.KitapId);
-            ViewData["UyeId"] = new SelectList(_context.Users, "UyeId", "Eposta", oduncKitap.UserId);
+
+            var q = _context.Users.Select(p => new { p.Id, AdSoyad = p.Adi + " " + p.Soyadi + " (" + p.Email + ")" }).Where(x => x.Id == oduncKitap.UserId);
+            ViewData["UserId"] = new SelectList(q, "Id", "AdSoyad");
+
             return View(oduncKitap);
         }
 
@@ -106,7 +116,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,KitapId,UyeId,AlisTarihi,GetirecegiTarih,GetirdigiTarih")] OduncKitap oduncKitap)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,KitapId,UserId,AlisTarihi,GetirecegiTarih,GetirdigiTarih")] OduncKitap oduncKitap)
         {
             if (id != oduncKitap.Id)
             {
