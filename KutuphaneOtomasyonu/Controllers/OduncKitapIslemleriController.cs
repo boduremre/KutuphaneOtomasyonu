@@ -143,41 +143,15 @@ namespace KutuphaneOtomasyonu.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["KitapId"] = new SelectList(_context.Kitaplar, "KitapId", "Ad", oduncKitap.KitapId);
-            ViewData["UyeId"] = new SelectList(_context.Users, "Id", "Email", oduncKitap.UserId);
-            return View(oduncKitap);
-        }
 
-        // GET: OduncKitapIslemleri/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var oduncKitap = await _context.OduncKitaplar
-                .Include(o => o.Kitap)
-                .Include(o => o.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (oduncKitap == null)
-            {
-                return NotFound();
-            }
+            var q = _context.Users.Select(p => new { p.Id, AdSoyad = p.Adi + " " + p.Soyadi + " (" + p.Email + ")" }).Where(x => x.Id == oduncKitap.UserId);
+            ViewData["UserId"] = new SelectList(q, "Id", "AdSoyad");
 
             return View(oduncKitap);
         }
 
-        // POST: OduncKitapIslemleri/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var oduncKitap = await _context.OduncKitaplar.FindAsync(id);
-            _context.OduncKitaplar.Remove(oduncKitap);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
         [HttpPost]
         public JsonResult GetirdiOlarakIsaretleJSON(int GetirilenKitapId)
