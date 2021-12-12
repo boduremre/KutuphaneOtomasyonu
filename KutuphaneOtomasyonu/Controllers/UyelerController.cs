@@ -71,7 +71,7 @@ namespace KutuphaneOtomasyonu.Controllers
                 appUser.EmailConfirmed = true;
                 appUser.PhoneNumberConfirmed = true;
                 appUser.UserName = appUser.Email;
-                var result = await _userManager.CreateAsync(appUser, "Kutuphane_123456");
+                var result = await _userManager.CreateAsync(appUser, "123");
                 if (result.Succeeded)
                 {
                     return RedirectToAction(nameof(Index));
@@ -105,7 +105,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Adi,Soyadi,Cinsiyet,TCKimlik,DogumTarihi,Ceza,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] AppUser appUser)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Adi,Soyadi,Cinsiyet,TCKimlik,DogumTarihi,Id,UserName,Email,PhoneNumber")] AppUser appUser)
         {
             if (id != appUser.Id)
             {
