@@ -71,6 +71,11 @@ namespace KutuphaneOtomasyonu.Controllers
                 appUser.EmailConfirmed = true;
                 appUser.PhoneNumberConfirmed = true;
                 appUser.UserName = appUser.Email;
+                appUser.NormalizedEmail = appUser.Email;
+                appUser.TwoFactorEnabled = false;
+                appUser.LockoutEnabled = false;
+                appUser.AccessFailedCount = 0;
+                appUser.NormalizedUserName = appUser.Email;
                 var result = await _userManager.CreateAsync(appUser, "123");
                 if (result.Succeeded)
                 {
