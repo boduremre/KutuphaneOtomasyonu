@@ -84,5 +84,8 @@ namespace KutuphaneOtomasyonu.Models
 
         [Display(Name = "Kapak Resmi (Resim URL Giriniz)")]
         public string KapakResmi { get; set; }
+
+        [Display(Name = "Ödünç Adet")]
+        public int OduncAdet { get; set; } = 0;
     }
 }
