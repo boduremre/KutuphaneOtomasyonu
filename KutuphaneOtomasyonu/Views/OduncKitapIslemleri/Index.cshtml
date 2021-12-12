@@ -52,7 +52,7 @@
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">Düzenle</a>
-                                        <button value="@item.Id" id="btnGetirdiOlarakIsaretle" class="btn btn-success btn-sm">Getirdi Olarak İşaretle</button>
+                                        <button value="@item.Id" id="btnGetirdiOlarakIsaretle" onclick="GetirdiOlarakIsaretle()" class="btn btn-success btn-sm">Getirdi Olarak İşaretle</button>
                                     </td>
                                 </tr>
                             }
@@ -66,49 +66,6 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-            // ödünç verilen kitap getirildi olarak işaretlendiğinde çalışacak olan event
-            $("#btnGetirdiOlarakIsaretle").click(function () {
-                var data = {
-                    GetirilenKitapId: $("button#btnGetirdiOlarakIsaretle").val()
-                };
-
-                $.ajax({
-                    type: 'Post',
-                    url: '/OduncKitapIslemleri/GetirdiOlarakIsaretleJSON',
-                    data: data,
-                    dataType: 'Json',
-                    contentType: 'application/x-www-form-urlencoded', //https://stackoverflow.com/questions/55054512/ajax-post-int-parameter-in-asp-net-core
-                    success: function (response) {
-                        if (response == "true") {
-                            //swal ile ekrana mesaj veriyoruz.
-                            swal({
-                                title: "Başarılı",
-                                text: "Kitap Getirildi Olarak İşaretlendi!",
-                                type: "success",
-                                showCancelButton: false,
-                                confirmButtonColor: "green",
-                                confirmButtonText: "Tamam",
-                                closeOnConfirm: false
-                            }, function () {
-                                location.reload();
-                            });
-                        } else {
-                            //swal ile ekrana mesaj veriyoruz.
-                            swal({
-                                title: "Başarısız!",
-                                text: "Kitap Getirildi Olarak İşaretlenemedi!",
-                                type: "error",
-                                showCancelButton: false,
-                                confirmButtonColor: "#DD6B55",
-                                confirmButtonText: "Tamam",
-                                closeOnConfirm: false
-                            }, function () {
-                                location.reload();
-                            });
-                        }
-                    }
-                });
-            });
 
             $('#tblOduncVerilenKitaplar').DataTable({
                 language: {
@@ -140,5 +97,49 @@
                 ]
             });
         });
+
+        function GetirdiOlarakIsaretle() {
+            // ödünç verilen kitap getirildi olarak işaretlendiğinde çalışacak olan event
+            var data = {
+                GetirilenKitapId: $("button#btnGetirdiOlarakIsaretle").val()
+            };
+
+            $.ajax({
+                type: 'Post',
+                url: '/OduncKitapIslemleri/GetirdiOlarakIsaretleJSON',
+                data: data,
+                dataType: 'Json',
+                contentType: 'application/x-www-form-urlencoded', //https://stackoverflow.com/questions/55054512/ajax-post-int-parameter-in-asp-net-core
+                success: function (response) {
+                    if (response == "true") {
+                        //swal ile ekrana mesaj veriyoruz.
+                        swal({
+                            title: "Başarılı",
+                            text: "Kitap Getirildi Olarak İşaretlendi!",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonColor: "green",
+                            confirmButtonText: "Tamam",
+                            closeOnConfirm: false
+                        }, function () {
+                            location.reload();
+                        });
+                    } else {
+                        //swal ile ekrana mesaj veriyoruz.
+                        swal({
+                            title: "Başarısız!",
+                            text: "Kitap Getirildi Olarak İşaretlenemedi!",
+                            type: "error",
+                            showCancelButton: false,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Tamam",
+                            closeOnConfirm: false
+                        }, function () {
+                            location.reload();
+                        });
+                    }
+                }
+            });
+        }
     </script>
 }
