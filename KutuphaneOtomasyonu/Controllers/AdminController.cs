@@ -1,8 +1,11 @@
 ﻿using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -15,12 +18,13 @@ namespace KutuphaneOtomasyonu.Controllers
     public class AdminController : Controller
     {
         private readonly KutuphaneDbContext _context;
-
+        private readonly IStringLocalizer<AdminController> _localizer;
         private readonly ILogger<AdminController> _logger;
 
-        public AdminController(ILogger<AdminController> logger, KutuphaneDbContext context)
+        public AdminController(ILogger<AdminController> logger, KutuphaneDbContext context, IStringLocalizer<AdminController> localizer)
         {
             _context = context;
+            _localizer = localizer;
             _logger = logger;
         }
 
@@ -45,6 +49,7 @@ namespace KutuphaneOtomasyonu.Controllers
             {
                 return NotFound();
             }
+
             return View(appUser);
         }
 
@@ -74,6 +79,18 @@ namespace KutuphaneOtomasyonu.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public IActionResult SetLanguage(string culture, string returnUrl)
+        {
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+            );
+
+            return LocalRedirect(returnUrl);
         }
     }
 }

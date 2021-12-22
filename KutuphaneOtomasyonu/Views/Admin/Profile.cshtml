@@ -1,14 +1,23 @@
 ﻿@model KutuphaneOtomasyonu.Models.AppUser
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@* The IViewLocalizer can be injected into the view. It does two things of interest:
+    1. It can HTML encode *parameters* passed to resource strings (not the resource strings themselves, as they may contain
+       HTML) automatically, and return the result as an IHtmlContent so Razor won't HTML encode it again;
+    2. It looks for localization resources for this view based on the view path, e.g. if the view's path is
+       "MyApplication/Views/Home/Index.cshtml", then the corresponding resource base path will be "MyApplication.Views.Home.Index" *@
+
+@inject IViewLocalizer Localizer
 @{
-    ViewData["Title"] = "Profil";
+    ViewData["Title"] = Localizer["Profile"];
 }
 
 <div class="row">
     <div class="col-md-12 col-xs-12 col-lg-12">
         <div class="white-box">
             <ul class="nav nav-tabs tabs customtab">
-                <li class="tab active"><a href="#profile" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">Profil</span> </a> </li>
-                <li class="tab"><a href="#passwd" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-lock"></i></span> <span class="hidden-xs">Şifre</span> </a> </li>
+                <li class="tab active"><a href="#profile" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-cog"></i></span> <span class="hidden-xs">@Localizer["Profile"]</span> </a> </li>
+                <li class="tab"><a href="#passwd" data-toggle="tab" aria-expanded="false"> <span class="visible-xs"><i class="fa fa-lock"></i></span> <span class="hidden-xs">@Localizer["Password"]</span> </a> </li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="profile">
@@ -77,8 +86,8 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <button class="btn btn-success">Güncelle</button>
-                            </div>
+                                <button class="btn btn-success">@Localizer["UpdateButton"]</button>
+</div>
                         </div>
                     </form>
                 </div>
@@ -106,7 +115,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <button class="btn btn-success">Şifre Değiştir</button>
+                                <button class="btn btn-success">@Localizer["ChangePasswordButton"]</button>
                             </div>
                         </div>
                     </form>

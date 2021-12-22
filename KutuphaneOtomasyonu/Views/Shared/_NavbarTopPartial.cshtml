@@ -8,12 +8,9 @@
         <div class="top-left-part"><a class="logo" asp-area="" asp-controller="Admin" asp-action="Index"><b><img src="~/images/eliteadmin-logo.png" alt="home" /></b><span class="hidden-xs"><img src="~/images/eliteadmin-text.png" alt="home" /></span></a></div>
         <ul class="nav navbar-top-links navbar-left hidden-xs">
             <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
-            @*<li>
-                <form role="search" class="app-search hidden-xs">
-                    <input type="text" placeholder="Ara..." class="form-control">
-                    <a href=""><i class="fa fa-search"></i></a>
-                </form>
-            </li>*@
+            <li>
+                @await Html.PartialAsync("_SelectLanguagePartial")
+            </li>
         </ul>
         <ul class="nav navbar-top-links navbar-right pull-right">
             @if (SignInManager.IsSignedIn(User))

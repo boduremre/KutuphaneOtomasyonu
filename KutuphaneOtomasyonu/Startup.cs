@@ -2,10 +2,14 @@ using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using System.Globalization;
 
 namespace KutuphaneOtomasyonu
 {
@@ -21,6 +25,25 @@ namespace KutuphaneOtomasyonu
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.AddMvc()
+             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+             .AddDataAnnotationsLocalization();
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultres = new[]
+                {
+                    new CultureInfo("en-US"),
+                    new CultureInfo("fr-FR"),
+                    new CultureInfo("tr-TR")
+                };
+
+                options.DefaultRequestCulture = new RequestCulture(culture: "tr-TR", uiCulture: "tr-TR");
+                options.SupportedCultures = supportedCultres;
+                options.SupportedUICultures = supportedCultres;
+            });
+
             services.AddDbContext<KutuphaneDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection"))
@@ -49,7 +72,6 @@ namespace KutuphaneOtomasyonu
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
-            services.AddRazorPages();
             services.AddAuthorization();
         }
 
@@ -72,6 +94,8 @@ namespace KutuphaneOtomasyonu
             app.UseStaticFiles();
 
             app.UseRouting();
+            var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(locOptions.Value);
 
             app.UseAuthentication();
             app.UseAuthorization();
@@ -80,7 +104,7 @@ namespace KutuphaneOtomasyonu
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Admin}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
 
