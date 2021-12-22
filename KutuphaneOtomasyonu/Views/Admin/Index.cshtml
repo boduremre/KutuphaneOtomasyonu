@@ -1,11 +1,13 @@
-﻿@{
-    ViewData["Title"] = "Anasayfa";
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
+    ViewData["Title"] = Localizer["Index"];
 }
 <!-- .row -->
 <div class="row">
     <div class="col-lg-3 col-sm-3 col-xs-12">
         <div class="white-box analytics-info">
-            <h3 class="box-title">Toplam Üye Sayısı</h3>
+            <h3 class="box-title">@Localizer["ToplamUyeSayisi"]</h3>
             <ul class="list-inline two-part">
                 <li>
                     <div id="sparklinedash"></div>
@@ -16,7 +18,7 @@
     </div>
     <div class="col-lg-3 col-sm-3 col-xs-12">
         <div class="white-box analytics-info">
-            <h3 class="box-title">Toplam Tekil Kitap Sayısı</h3>
+            <h3 class="box-title">@Localizer["ToplamTekilKitapSayisi"]</h3>
             <ul class="list-inline two-part">
                 <li>
                     <div id="sparklinedash2"></div>
@@ -27,7 +29,7 @@
     </div>
     <div class="col-lg-3 col-sm-3 col-xs-12">
         <div class="white-box analytics-info">
-            <h3 class="box-title">Ödünç Verilen Kitap Sayısı</h3>
+            <h3 class="box-title">@Localizer["OduncVerilenKitapSayisi"]</h3>
             <ul class="list-inline two-part">
                 <li>
                     <div id="sparklinedash3"></div>
@@ -38,7 +40,7 @@
     </div>
     <div class="col-lg-3 col-sm-3 col-xs-12">
         <div class="white-box analytics-info">
-            <h3 class="box-title">Geciken Kitap Sayısı</h3>
+            <h3 class="box-title">@Localizer["GecikenKitapSayisi"]</h3>
             <ul class="list-inline two-part">
                 <li>
                     <div id="sparklinedash4"></div>
@@ -53,7 +55,7 @@
 <div class="row">
     <div class="col-md-4 col-sm-12 col-xs-12">
         <div class="white-box">
-            <h3 class="box-title">Son Kayıt Olan Üyeler</h3>
+            <h3 class="box-title">@Localizer["SonKayitOlanUyeler"]</h3>
             <div class="steamline">
                 @foreach (var uye in (IEnumerable<AppUser>)ViewData["SonKayitOlan10Uye"])
                 {
@@ -73,7 +75,7 @@
     </div>
     <div class="col-md-4 col-sm-12 col-xs-12">
         <div class="white-box">
-            <h3 class="box-title">Son Kaydedilen Kitaplar</h3>
+            <h3 class="box-title">@Localizer["SonKaydedilenKitaplar"]</h3>
             <ul class="feeds">
                 @foreach (var kitap in (IEnumerable<Kitap>)ViewData["SonKaydedilenKitaplar"])
                 {
@@ -106,7 +108,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="white-box">
-            <h3 class="box-title">Ödünç Verilen Kitaplar Listesi (Son 10 Kitap)</h3>
+            <h3 class="box-title">@Localizer["KitaplarListesi"]</h3>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -132,14 +134,14 @@
                                     @{TimeSpan arasindakiGunler = DateTime.Now - oduncKitap.GetirecegiTarih;}
                                     @if (oduncKitap.GetirdigiTarih == null && oduncKitap.GetirecegiTarih < DateTime.Now)
                                     {
-                                        <div class="label label-table label-danger">
-                                            @Math.Floor(arasindakiGunler.TotalDays).ToString() Gün Gecikti
-                                        </div>
+                                    <div class="label label-table label-danger">
+                                        @Math.Floor(arasindakiGunler.TotalDays).ToString() @Localizer["GunGecikti"]
+                                    </div>
                                     }
                                     else
                                     {
                                         <div class="label label-table label-success">
-                                            @Math.Abs(Math.Floor(arasindakiGunler.TotalDays)).ToString() Gün Kaldı
+                                            @Math.Abs(Math.Floor(arasindakiGunler.TotalDays)).ToString() @Localizer["GunKaldi"]
                                         </div>
                                     }
                                 </td>
