@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
-    [Route("api/kitaplar")]  //chrome üzerindenapi kullanmak için.
+    [Route("api/kitaplar")]  //For using kitaplarapi via chrome.
     [ApiController]
     public class KitaplarApiController : ControllerBase
     {
