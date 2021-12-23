@@ -117,34 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GecikenKitapSayisi" xml:space="preserve">
-    <value>Number of delayed books</value>
+  <data name="Ad" xml:space="preserve">
+    <value>Ad</value>
   </data>
-  <data name="GunGecikti" xml:space="preserve">
-    <value>The day is late.</value>
+  <data name="Adet" xml:space="preserve">
+    <value>Adet</value>
   </data>
-  <data name="GunKaldi" xml:space="preserve">
-    <value>Days left</value>
+  <data name="Arapca" xml:space="preserve">
+    <value>Arapça</value>
   </data>
-  <data name="Index" xml:space="preserve">
-    <value>Index</value>
+  <data name="Barkod" xml:space="preserve">
+    <value>Barkod</value>
   </data>
-  <data name="KitaplarListesi" xml:space="preserve">
-    <value>List of borrowed books Last 10 books)</value>
+  <data name="BaskiYili" xml:space="preserve">
+    <value>Baskı Yılı</value>
   </data>
-  <data name="OduncVerilenKitapSayisi" xml:space="preserve">
-    <value>Number of borrowed books</value>
+  <data name="Ceviren" xml:space="preserve">
+    <value>Çeviren</value>
   </data>
-  <data name="SonKaydedilenKitaplar" xml:space="preserve">
-    <value>Recently saved books</value>
+  <data name="DemirbasNo" xml:space="preserve">
+    <value>Demirbaş No</value>
   </data>
-  <data name="SonKayitOlanUyeler" xml:space="preserve">
-    <value>Last registered members</value>
+  <data name="DetayliBilgi" xml:space="preserve">
+    <value>Detaylı Bilgi</value>
   </data>
-  <data name="ToplamTekilKitapSayisi" xml:space="preserve">
-    <value>Total number of individual books</value>
+  <data name="Dil" xml:space="preserve">
+    <value>Dil</value>
   </data>
-  <data name="ToplamUyeSayisi" xml:space="preserve">
-    <value>Total Member Count</value>
+  <data name="EdinmeBedeli" xml:space="preserve">
+    <value>Edinme Bedeli</value>
+  </data>
+  <data name="Fransizca" xml:space="preserve">
+    <value>Fransızca</value>
+  </data>
+  <data name="Ingilizce" xml:space="preserve">
+    <value>İngilizce</value>
+  </data>
+  <data name="Iptal" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="ISBN" xml:space="preserve">
+    <value>ISBN</value>
+  </data>
+  <data name="KapakResmi" xml:space="preserve">
+    <value>Kapak Resmi</value>
+  </data>
+  <data name="KategoriEkle" xml:space="preserve">
+    <value>Kategori Ekle</value>
+  </data>
+  <data name="KategoriId" xml:space="preserve">
+    <value>Kategori Id</value>
+  </data>
+  <data name="KitapBilgisiDuzenle" xml:space="preserve">
+    <value>Kitap Bilgisi Düzenle</value>
+  </data>
+  <data name="KitapDetay" xml:space="preserve">
+    <value>Kitap Detay</value>
+  </data>
+  <data name="KitapEkle" xml:space="preserve">
+    <value>Kitap Ekle</value>
+  </data>
+  <data name="OrjinalAd" xml:space="preserve">
+    <value>Orjinal Ad</value>
+  </data>
+  <data name="SayfaSayisi" xml:space="preserve">
+    <value>Sayfa Sayısı</value>
+  </data>
+  <data name="TeminBicimi" xml:space="preserve">
+    <value>Temin Biçimi</value>
+  </data>
+  <data name="Turkce" xml:space="preserve">
+    <value>Türkçe</value>
+  </data>
+  <data name="YayineviId" xml:space="preserve">
+    <value>Yayınevi Id</value>
+  </data>
+  <data name="YazarId" xml:space="preserve">
+    <value>Yazar Id</value>
+  </data>
+  <data name="YerBilgisi" xml:space="preserve">
+    <value>Yer Bilgisi</value>
   </data>
 </root>

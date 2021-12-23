@@ -117,34 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GecikenKitapSayisi" xml:space="preserve">
-    <value>Number of delayed books</value>
+  <data name="Adiniz" xml:space="preserve">
+    <value>Adiniz</value>
   </data>
-  <data name="GunGecikti" xml:space="preserve">
-    <value>The day is late.</value>
+  <data name="Anasayfa" xml:space="preserve">
+    <value>Anasayfa</value>
   </data>
-  <data name="GunKaldi" xml:space="preserve">
-    <value>Days left</value>
+  <data name="EMailAdres" xml:space="preserve">
+    <value>Email Adres</value>
   </data>
-  <data name="Index" xml:space="preserve">
-    <value>Index</value>
+  <data name="Iletisim" xml:space="preserve">
+    <value>İletişim</value>
   </data>
-  <data name="KitaplarListesi" xml:space="preserve">
-    <value>List of borrowed books Last 10 books)</value>
+  <data name="MesajGonderin" xml:space="preserve">
+    <value>Mesaj Gönderin</value>
   </data>
-  <data name="OduncVerilenKitapSayisi" xml:space="preserve">
-    <value>Number of borrowed books</value>
+  <data name="Mesajiniz" xml:space="preserve">
+    <value>Mesajınız</value>
   </data>
-  <data name="SonKaydedilenKitaplar" xml:space="preserve">
-    <value>Recently saved books</value>
-  </data>
-  <data name="SonKayitOlanUyeler" xml:space="preserve">
-    <value>Last registered members</value>
-  </data>
-  <data name="ToplamTekilKitapSayisi" xml:space="preserve">
-    <value>Total number of individual books</value>
-  </data>
-  <data name="ToplamUyeSayisi" xml:space="preserve">
-    <value>Total Member Count</value>
+  <data name="Telefon" xml:space="preserve">
+    <value>Telefon Numaranız</value>
   </data>
 </root>

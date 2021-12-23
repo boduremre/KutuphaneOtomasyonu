@@ -117,34 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GecikenKitapSayisi" xml:space="preserve">
-    <value>Geciken Kitap Sayısı</value>
+  <data name="EminMisiniz" xml:space="preserve">
+    <value>Are you sure? This operation can't revoke!!!</value>
   </data>
-  <data name="GunGecikti" xml:space="preserve">
-    <value>Gün Gecikti</value>
+  <data name="Iptal" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="GunKaldi" xml:space="preserve">
-    <value>Gün Kaldı</value>
-  </data>
-  <data name="Index" xml:space="preserve">
-    <value>Indice</value>
-  </data>
-  <data name="KitaplarListesi" xml:space="preserve">
-    <value>Ödünç Verilen Kitaplar Listesi (Son 10 Kitap)</value>
-  </data>
-  <data name="OduncVerilenKitapSayisi" xml:space="preserve">
-    <value>Ödünç Verilen Kitap Sayısı</value>
-  </data>
-  <data name="SonKaydedilenKitaplar" xml:space="preserve">
-    <value>Son Kaydedilen Kitaplar</value>
-  </data>
-  <data name="SonKayitOlanUyeler" xml:space="preserve">
-    <value>Son Kayıt Olan Üyeler</value>
-  </data>
-  <data name="ToplamTekilKitapSayisi" xml:space="preserve">
-    <value>Toplam Tekil Kitap Sayısı</value>
-  </data>
-  <data name="ToplamUyeSayisi" xml:space="preserve">
-    <value>Nombre total de membres</value>
+  <data name="KategoriDuzenle" xml:space="preserve">
+    <value>Edit Category</value>
   </data>
 </root>

@@ -117,16 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ChangePasswordButton" xml:space="preserve">
-    <value>Changer le mot de passe</value>
+  <data name="Detay" xml:space="preserve">
+    <value>Detail</value>
   </data>
-  <data name="Password" xml:space="preserve">
-    <value>Mot de passe</value>
+  <data name="Duzenle" xml:space="preserve">
+    <value>Edit</value>
   </data>
-  <data name="Profile" xml:space="preserve">
-    <value>Profil</value>
+  <data name="Kitaplar" xml:space="preserve">
+    <value>Books</value>
   </data>
-  <data name="UpdateButton" xml:space="preserve">
-    <value>Mettre à jour</value>
+  <data name="Sil" xml:space="preserve">
+    <value>Delete</value>
   </data>
 </root>
