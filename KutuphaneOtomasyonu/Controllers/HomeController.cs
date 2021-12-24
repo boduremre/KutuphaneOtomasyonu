@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using KutuphaneOtomasyonu.Data;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,16 @@ namespace KutuphaneOtomasyonu.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly KutuphaneDbContext _context;
+
+        public HomeController(KutuphaneDbContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
+            //ViewBag.Categories = _context.Kategoriler.OrderBy(x => x.KategoriAdi).ToList();
             return View();
         }
 
