@@ -35,7 +35,6 @@ namespace KutuphaneOtomasyonu
                 var supportedCultres = new[]
                 {
                     new CultureInfo("en-US"),
-                    new CultureInfo("fr-FR"),
                     new CultureInfo("tr-TR")
                 };
 
