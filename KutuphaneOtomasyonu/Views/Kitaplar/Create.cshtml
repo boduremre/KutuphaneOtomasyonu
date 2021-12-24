@@ -1,112 +1,114 @@
-﻿@model KutuphaneOtomasyonu.Models.Kitap
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model KutuphaneOtomasyonu.Models.Kitap
 
 @{
-    ViewData["Title"] = "Kitap Ekle";
+    ViewData["Title"] = Localizer["KitapEkle"];
 }
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Kategori Ekle</div>
+            <div class="panel-heading">@Localizer["KategoriEkle"]</div>
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <label asp-for="Ad" class="control-label"></label>
+                            <label asp-for="Ad" class="control-label">@Localizer["Ad"]</label>
                             <input asp-for="Ad" class="form-control" />
                             <span asp-validation-for="Ad" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="OzgunAd" class="control-label"></label>
+                            <label asp-for="OzgunAd" class="control-label">@Localizer["OrjinalAd"]</label>
                             <input asp-for="OzgunAd" class="form-control" />
                             <span asp-validation-for="OzgunAd" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="YazarId" class="control-label"></label>
+                            <label asp-for="YazarId" class="control-label">@Localizer["YazarId"]</label>
                             <select asp-for="YazarId" class="form-control" asp-items="ViewBag.YazarId"></select>
                         </div>
                         <div class="form-group">
-                            <label asp-for="SayfaSayisi" class="control-label"></label>
+                            <label asp-for="SayfaSayisi" class="control-label">@Localizer["SayfaSayisi"]</label>
                             <input asp-for="SayfaSayisi" class="form-control" />
                             <span asp-validation-for="SayfaSayisi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Adet" class="control-label"></label>
+                            <label asp-for="Adet" class="control-label">@Localizer["Adet"]</label>
                             <input asp-for="Adet" class="form-control" />
                             <span asp-validation-for="Adet" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="BaskiYili" class="control-label"></label>
+                            <label asp-for="BaskiYili" class="control-label">@Localizer["BaskiYili"]</label>
                             <input asp-for="BaskiYili" class="form-control" />
                             <span asp-validation-for="BaskiYili" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Dil" class="control-label"></label>
+                            <label asp-for="Dil" class="control-label">@Localizer["Dil"]</label>
                             <select asp-for="Dil" class="form-control">
-                                <option value="Türkçe">Türkçe</option>
-                                <option value="İngilizce">İngilizce</option>
-                                <option value="Fransızca">Fransızca</option>
-                                <option value="Latince">Latince</option>
-                                <option value="Arapça">Arapça</option>
-                                <option value="Farsça">Farsça</option>
+                                <option value="Türkçe">@Localizer["Turkce"]</option>
+                                <option value="İngilizce">@Localizer["Ingilizce"]</option>
+                                <option value="Fransızca">@Localizer["Fransizca"]</option>
+                                <option value="Latince">@Localizer["Latince"]</option>
+                                <option value="Arapça">@Localizer["Arapca"]</option>
+                                <option value="Farsça">@Localizer["Farsca"]</option>
                             </select>
                             <span asp-validation-for="Dil" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Barkod" class="control-label"></label>
+                            <label asp-for="Barkod" class="control-label">@Localizer["Barkod"]</label>
                             <input asp-for="Barkod" class="form-control" maxlength="13" data-mask="9999999999999" />
                             <span asp-validation-for="Barkod" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="ISBN" class="control-label"></label>
+                            <label asp-for="ISBN" class="control-label">@Localizer["ISBN"]</label>
                             <input asp-for="ISBN" class="form-control" />
                             <span asp-validation-for="ISBN" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Ceviren" class="control-label"></label>
+                            <label asp-for="Ceviren" class="control-label">@Localizer["Ceviren"]</label>
                             <input asp-for="Ceviren" class="form-control" />
                             <span asp-validation-for="Ceviren" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="TeminBicimi" class="control-label"></label>
+                            <label asp-for="TeminBicimi" class="control-label">@Localizer["TeminBicimi"]</label>
                             <select asp-for="TeminBicimi" class="form-control">
-                                <option value="Satın Alma">Satın Alma</option>
-                                <option value="Bağış">Bağış</option>
+                                <option value="Satın Alma">@Localizer["SatinAlma"]</option>
+                                <option value="Bağış">@Localizer["Bagis"]</option>
                             </select>
                             <span asp-validation-for="TeminBicimi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="EdinmeBedeli" class="control-label"></label>
+                            <label asp-for="EdinmeBedeli" class="control-label">@Localizer["EdinmeBedeli"]</label>
                             <input asp-for="EdinmeBedeli" class="form-control" />
                             <span asp-validation-for="EdinmeBedeli" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="DemirbasNo" class="control-label"></label>
+                            <label asp-for="DemirbasNo" class="control-label">@Localizer["DemirbasNo"]</label>
                             <input asp-for="DemirbasNo" class="form-control" />
                             <span asp-validation-for="DemirbasNo" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="YerBilgisi" class="control-label"></label> (B: Bölüm, R: Raf, S: Sıra, <a href="https://www.library.illinois.edu/infosci/research/guides/dewey/" target="_blank">Detaylı Bilgi</a>)
+                            <label asp-for="YerBilgisi" class="control-label">@Localizer["YerBilgisi"]</label> (B: Bölüm, R: Raf, S: Sıra, <a href="https://www.library.illinois.edu/infosci/research/guides/dewey/" target="_blank">@Localizer["DetayliBilgi"]</a>)
                             <input asp-for="YerBilgisi" class="form-control" data-mask="B999-R999-S999" />
                             <span asp-validation-for="YerBilgisi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="KapakResmi" class="control-label"></label>
+                            <label asp-for="KapakResmi" class="control-label">@Localizer["KapakResmi"]</label>
                             <input asp-for="KapakResmi" class="form-control" />
                             <span asp-validation-for="KapakResmi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="KategoriId" class="control-label"></label>
+                            <label asp-for="KategoriId" class="control-label">@Localizer["KategoriId"]></label>
                             <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.KategoriId"></select>
                         </div>
                         <div class="form-group">
-                            <label asp-for="YayineviId" class="control-label"></label>
+                            <label asp-for="YayineviId" class="control-label">@Localizer["YayineviId"]</label>
                             <select asp-for="YayineviId" class="form-control" asp-items="ViewBag.YayineviId"></select>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Ekle" class="btn btn-info" />
-                            <a asp-action="Index" class="btn btn-danger">İptal</a>
+                            <a asp-action="Index" class="btn btn-danger">@Localizer["Iptal"]</a>
                         </div>
                     </form>
                 </div>

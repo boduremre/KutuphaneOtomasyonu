@@ -1,20 +1,22 @@
-﻿@model IEnumerable<KutuphaneOtomasyonu.Models.OduncKitap>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IEnumerable<KutuphaneOtomasyonu.Models.OduncKitap>
 
 @{
-    ViewData["Title"] = "Ödünç Verilen Kitaplar Listesi";
+    ViewData["Title"] = Localizer["Odunc"];
 }
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Ödünç Verilen Kitaplar Listesi</div>
+            <div class="panel-heading">@Localizer["Odunc"]</div>
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
                     <table id="tblOduncVerilenKitaplar" class="table table-striped">
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Kitap.KitapId) / @Html.DisplayNameFor(model => model.Kitap.Barkod) / @Html.DisplayNameFor(model => model.Kitap.Ad) / Yazar / @Html.DisplayNameFor(model => model.Kitap.Yayinevi.Adi)
+                                    @Html.DisplayNameFor(model => model.Kitap.KitapId) / @Html.DisplayNameFor(model => model.Kitap.Barkod) / @Html.DisplayNameFor(model => model.Kitap.Ad) / @Localizer["Yazar"] / @Html.DisplayNameFor(model => model.Kitap.Yayinevi.Adi)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.User)
@@ -28,7 +30,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.GetirdigiTarih)
                                 </th>
-                                <th>İşlemler</th>
+                                <th>@Localizer["Islemler"]</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,8 +53,8 @@
                                         @Html.DisplayFor(modelItem => item.GetirdigiTarih)
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">Düzenle</a>
-                                        <button value="@item.Id" id="btnGetirdiOlarakIsaretle" onclick="GetirdiOlarakIsaretle()" class="btn btn-success btn-sm">Getirdi Olarak İşaretle</button>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">@Localizer["Duzenle"]</a>
+                                        <button value="@item.Id" id="btnGetirdiOlarakIsaretle" onclick="GetirdiOlarakIsaretle()" class="btn btn-success btn-sm">@Localizer["Getirdi"]</button>
                                     </td>
                                 </tr>
                             }
@@ -114,8 +116,8 @@
                     if (response == "true") {
                         //swal ile ekrana mesaj veriyoruz.
                         swal({
-                            title: "Başarılı",
-                            text: "Kitap Getirildi Olarak İşaretlendi!",
+                            title: @Localizer["Basarili"],
+                            text: @Localizer["Getirdi"],
                             type: "success",
                             showCancelButton: false,
                             confirmButtonColor: "green",
@@ -127,8 +129,8 @@
                     } else {
                         //swal ile ekrana mesaj veriyoruz.
                         swal({
-                            title: "Başarısız!",
-                            text: "Kitap Getirildi Olarak İşaretlenemedi!",
+                            title: @Localizer["Hata"],
+                            text: @Localizer["Getirmedi"],
                             type: "error",
                             showCancelButton: false,
                             confirmButtonColor: "#DD6B55",

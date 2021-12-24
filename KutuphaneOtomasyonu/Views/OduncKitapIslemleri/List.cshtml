@@ -1,7 +1,9 @@
-﻿@model IEnumerable<KutuphaneOtomasyonu.Models.OduncKitap>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IEnumerable<KutuphaneOtomasyonu.Models.OduncKitap>
 
 @{
-    ViewData["Title"] = "Ödünç Kitaplar Listesi (Teslim Edilenler)";
+    ViewData["Title"] = Localizer["OduncKitaplarListesi"];
 }
 
 <div class="row">
@@ -14,7 +16,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Kitap.KitapId) / @Html.DisplayNameFor(model => model.Kitap.Barkod) / @Html.DisplayNameFor(model => model.Kitap.Ad) / Yazar / @Html.DisplayNameFor(model => model.Kitap.Yayinevi.Adi)
+                                    @Html.DisplayNameFor(model => model.Kitap.KitapId) / @Html.DisplayNameFor(model => model.Kitap.Barkod) / @Html.DisplayNameFor(model => model.Kitap.Ad) / @Localizer["Yazar"] / @Html.DisplayNameFor(model => model.Kitap.Yayinevi.Adi)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.User)

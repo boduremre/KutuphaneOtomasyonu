@@ -1,48 +1,51 @@
-﻿@model KutuphaneOtomasyonu.Models.OduncKitap
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model KutuphaneOtomasyonu.Models.OduncKitap
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Localizer["Details"];
 }
 
-<h1>Details</h1>
+<h1>@Localizer["Details"]</h1>
 
 <div>
-    <h4>OduncKitap</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Kitap)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Kitap.Ad)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.User)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AlisTarihi)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AlisTarihi)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GetirecegiTarih)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GetirecegiTarih)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GetirdigiTarih)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GetirdigiTarih)
-        </dd>
-    </dl>
+    <h4>
+        @Localizer["OduncKitap"]/h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Kitap)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Kitap.Ad)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.User)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AlisTarihi)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AlisTarihi)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GetirecegiTarih)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GetirecegiTarih)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.GetirdigiTarih)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.GetirdigiTarih)
+            </dd>
+        </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id">@Localizer["Duzenle"]</a> |
+    <a asp-action="Index">@Localizer["ListeyeDon"]</a>
 </div>

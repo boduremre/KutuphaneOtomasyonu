@@ -1,13 +1,15 @@
-﻿@model IEnumerable<KutuphaneOtomasyonu.Models.Kitap>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IEnumerable<KutuphaneOtomasyonu.Models.Kitap>
 
 @{
-    ViewData["Title"] = "Kitaplar";
+    ViewData["Title"] = Localizer["Kitaplar"];
 }
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Kitaplar</div>
+            <div class="panel-heading">@Localizer["Kitaplar"]</div>
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
                     <table id="tblKitaplar" class="table table-striped">
@@ -49,43 +51,43 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ad)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SayfaSayisi)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Adet)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.OduncAdet)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.BaskiYili)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Dil)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Yazar.Ad) @Html.DisplayFor(modelItem => item.Yazar.Soyad)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Yayinevi.Adi)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.YerBilgisi)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.KitapId" class="btn btn-info btn-sm">Düzenle</a>
-                                    <a asp-action="Details" asp-route-id="@item.KitapId" class="btn btn-primary btn-sm">Detay</a>
-                                    <a asp-action="Delete" asp-route-id="@item.KitapId" class="btn btn-danger btn-sm">Sil</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SayfaSayisi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Adet)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OduncAdet)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.BaskiYili)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Dil)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Yazar.Ad) @Html.DisplayFor(modelItem => item.Yazar.Soyad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Yayinevi.Adi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.YerBilgisi)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.KitapId" class="btn btn-info btn-sm">@Localizer["Duzenle"]</a>
+                                        <a asp-action="Details" asp-route-id="@item.KitapId" class="btn btn-primary btn-sm">@Localizer["Detay"]</a>
+                                        <a asp-action="Delete" asp-route-id="@item.KitapId" class="btn btn-danger btn-sm">@Localizer["Sil"]</a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

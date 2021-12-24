@@ -1,13 +1,15 @@
-﻿@model IEnumerable<KutuphaneOtomasyonu.Models.AppUser>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IEnumerable<KutuphaneOtomasyonu.Models.AppUser>
 
 @{
-    ViewData["Title"] = "Üyeler";
+    ViewData["Title"] = Localizer["Uyeler"];
 }
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Üyeler</div>
+            <div class="panel-heading">@Localizer["Uyeler"]</div>
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
                     <table id="tblUyeler" class="table table-striped">
@@ -16,7 +18,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.TCKimlik)
                                 <th>
-                                    Kullanıcı Adı
+                                    @Localizer["KullaniciAdi"]
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Adi)
@@ -28,50 +30,50 @@
                                     @Html.DisplayNameFor(model => model.Cinsiyet)
                                 </th>
                                 <th>
-                                    Eposta
+                                    @Localizer["EMail"]
                                 </th>
                                 <th>
-                                    Telefon
+                                    @Localizer["Telefon"]
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Ceza)
                                 </th>
-                                <th>İşlemler</th>
+                                <th>@Localizer["Islemler"]</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TCKimlik)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.UserName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Adi)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Soyadi)
-                                </td>
-                                <td>
-                                    @if (item.Cinsiyet) { Write("Erkek"); } else { Write("Kadın"); }
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Ceza)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">Düzenle</a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Detay</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TCKimlik)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Adi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Soyadi)
+                                    </td>
+                                    <td>
+                                        @if (item.Cinsiyet) { Write(@Localizer["Erkek"]); } else { Write(@Localizer["Kadin"]); }
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ceza)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">@Localizer["Duzenle"]</a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">@Localizer["Detay"]</a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

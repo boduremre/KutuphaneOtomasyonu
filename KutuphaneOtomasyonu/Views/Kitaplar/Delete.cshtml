@@ -1,16 +1,18 @@
-﻿@model KutuphaneOtomasyonu.Models.Kitap
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model KutuphaneOtomasyonu.Models.Kitap
 
 @{
-    ViewData["Title"] = "Kitap Sil";
+    ViewData["Title"] = Localizer["KitapSil"];
 }
 
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Kitap Sil</div>
+            <div class="panel-heading">@Localizer["KitapSil"]</div>
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
-                    <p>Bu kitabı <b>(@Html.DisplayFor(model => model.Ad))</b> silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!!!</p>
+                    <p>Bu kitabı <b>(@Html.DisplayFor(model => model.Ad))</b> @Localizer["EminMisiniz"]</p>
 
                     <dl class="row">
                         <dt class="col-sm-2">
@@ -101,7 +103,7 @@
                     <form asp-action="Delete">
                         <input type="hidden" asp-for="KitapId" />
                         <input type="submit" value="Sil" class="btn btn-danger" />
-                        <a asp-action="Index" class="btn btn-info">İptal</a>
+                        <a asp-action="Index" class="btn btn-info">@Localizer["Iptal"]</a>
                     </form>
                 </div>
             </div>

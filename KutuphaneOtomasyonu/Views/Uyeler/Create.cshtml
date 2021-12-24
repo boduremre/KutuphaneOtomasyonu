@@ -1,7 +1,9 @@
-﻿@model KutuphaneOtomasyonu.Models.AppUser
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model KutuphaneOtomasyonu.Models.AppUser
 
 @{
-    ViewData["Title"] = "Üye Ekle";
+    ViewData["Title"] = Localizer["UyeEkle"];
 }
 
 <div class="row">
@@ -13,49 +15,49 @@
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <label asp-for="TCKimlik" class="control-label"></label>
+                            <label asp-for="TCKimlik" class="control-label">@Localizer["TC"]</label>
                             <input asp-for="TCKimlik" class="form-control" />
                             <span asp-validation-for="TCKimlik" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Adi" class="control-label"></label>
+                            <label asp-for="Adi" class="control-label">@Localizer["Ad"]</label>
                             <input asp-for="Adi" class="form-control" />
                             <span asp-validation-for="Adi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Soyadi" class="control-label"></label>
+                            <label asp-for="Soyadi" class="control-label">@Localizer["Soyad"]</label>
                             <input asp-for="Soyadi" class="form-control" />
                             <span asp-validation-for="Soyadi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Cinsiyet" class="control-label"></label>
+                            <label asp-for="Cinsiyet" class="control-label">@Localizer["Cinsiyet"]</label>
                             <select asp-for="Cinsiyet" class="form-control">
                                 <option value="true">Erkek</option>
                                 <option value="false">Kadın</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label asp-for="DogumTarihi" class="control-label"></label>
+                            <label asp-for="DogumTarihi" class="control-label">@Localizer["DogumTarihi"]</label>
                             <input asp-for="DogumTarihi" class="form-control" />
                             <span asp-validation-for="DogumTarihi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Email" class="control-label">Eposta</label>
+                            <label asp-for="Email" class="control-label">@Localizer["EMail"]</label>
                             <input asp-for="Email" class="form-control" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="PhoneNumber" class="control-label">Telefon</label>
+                            <label asp-for="PhoneNumber" class="control-label">@Localizer["Telefon"]</label>
                             <input asp-for="PhoneNumber" class="form-control" data-mask="(999) 999-9999" />
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Şifre</label>
-                            <input class="form-control" name="Password" value="123"/>
+                            <label class="control-label">@Localizer["Sifre"]</label>
+                            <input class="form-control" name="Password" value="123" />
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Ekle" class="btn btn-info" />
-                            <a asp-action="Index" class="btn btn-danger">İptal</a>
+                            <a asp-action="Index" class="btn btn-danger">@Localizer["Iptal"]</a>
                         </div>
                     </form>
                 </div>

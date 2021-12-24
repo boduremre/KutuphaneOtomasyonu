@@ -1,6 +1,8 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@{
     Layout = "__Layout";
-    ViewData["Title"] = "İletişim";
+    ViewData["Title"] = Localizer["Iletisim"];
 }
 @section Styles{
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css" type="text/css">
@@ -17,8 +19,8 @@
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Anasayfa</a></li>
-                    <li class="breadcrumb-item active">İletişim</li>
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@Localizer["Anasayfa"]</a></li>
+                    <li class="breadcrumb-item active">@Localizer["Iletisim"]</li>
                 </ol>
             </nav>
         </div>
@@ -65,7 +67,7 @@
                                 <i class="fas fa-mobile-alt"></i>
                             </div>
                             <div class="contact-info-text">
-                                <p><span>Telefon:</span> (800) 0123 456 789 </p>
+                                <p><span>@Localizer["Telefon"]:</span> (800) 0123 456 789 </p>
                             </div>
                         </div>
                     </div>
@@ -73,32 +75,32 @@
             </div>
             <div class="col-lg-7 col-md-7 col-12 mt--30 mt-md--0">
                 <div class="contact_form">
-                    <h3 class="ct_title">Send Us a Message</h3>
+                    <h3 class="ct_title">@Localizer["MesajGonderin"]</h3>
                     <form id="contact-form" action="php/mail.php" method="post" class="contact-form">
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Your Name <span class="required">*</span></label>
+                                    <label>@Localizer["Adiniz"] <span class="required">*</span></label>
                                     <input type="text" id="con_name" name="con_name" class="form-control"
                                            required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Your Email <span class="required">*</span></label>
+                                    <label>@Localizer["EMailAdres"] <span class="required">*</span></label>
                                     <input type="email" id="con_email" name="con_email" class="form-control"
                                            required>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Your Phone*</label>
+                                    <label>@Localizer["Telefon"]*</label>
                                     <input type="text" id="con_phone" name="con_phone" class="form-control">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <label>Your Message</label>
+                                    <label>@Localizer["Mesajiniz"]</label>
                                     <textarea id="con_message" name="con_message"
                                               class="form-control"></textarea>
                                 </div>
