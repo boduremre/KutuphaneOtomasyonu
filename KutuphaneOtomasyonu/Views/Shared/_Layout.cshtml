@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="utf-8">
@@ -63,7 +66,7 @@
                 @RenderBody()
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> @DateTime.Now.Year.ToString() &copy; emrebodur.com </footer>
+            <footer class="footer text-center"> @DateTime.Now.Year.ToString() &copy; emrebodur.com , senaisadik@gmail.com</footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

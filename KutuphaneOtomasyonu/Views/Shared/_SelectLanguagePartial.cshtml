@@ -16,7 +16,7 @@
 }
 
 <div title="@Localizer["Request culture provider:"] @requestCulture?.Provider?.GetType().Name">
-    <form id="selectLanguage" asp-controller="Admin" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post" class="form-control-sm" role="form">
+    <form id="selectLanguage" asp-controller="Admin" asp-action="SetLanguage" asp-route-returnUrl="@returnUrl" method="post" role="form">
         <select name="culture" onchange="this.form.submit();" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems" class="form-control">
         </select>
     </form>
