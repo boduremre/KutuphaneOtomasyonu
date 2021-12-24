@@ -1,7 +1,9 @@
-﻿@model KutuphaneOtomasyonu.Models.Yazar
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model KutuphaneOtomasyonu.Models.Yazar
 
 @{
-    ViewData["Title"] = "Yazar Ekle";
+    ViewData["Title"] = Localizer["YazarEkle"];
 }
 
 @section Styles {
@@ -11,34 +13,34 @@
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Yazar Ekle</div>
+            <div class="panel-heading">@Localizer["YazarEkle"]</div>
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
                     <form asp-action="Create">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <label asp-for="Ad" class="control-label"></label>
+                            <label asp-for="Ad" class="control-label">@Localizer["Ad"]</label>
                             <input asp-for="Ad" class="form-control" />
                             <span asp-validation-for="Ad" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Soyad" class="control-label"></label>
+                            <label asp-for="Soyad" class="control-label">@Localizer["Soyad"]</label>
                             <input asp-for="Soyad" class="form-control" />
                             <span asp-validation-for="Soyad" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Biyografi" class="control-label"></label>
+                            <label asp-for="Biyografi" class="control-label">@Localizer["Biyografi"]</label>
                             <textarea asp-for="Biyografi" class="form-control textarea_editor" rows="15" placeholder="Biyografi"></textarea>
                             <span asp-validation-for="Biyografi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="ResimUrl" class="control-label"></label>
+                            <label asp-for="ResimUrl" class="control-label">@Localizer["ResimUrl"]</label>
                             <input asp-for="ResimUrl" class="form-control" />
                             <span asp-validation-for="ResimUrl" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Ekle" class="btn btn-info" />
-                            <a asp-action="Index" class="btn btn-danger">İptal</a>
+                            <a asp-action="Index" class="btn btn-danger">@Localizer["Iptal"]</a>
                         </div>
                     </form>
                 </div>
