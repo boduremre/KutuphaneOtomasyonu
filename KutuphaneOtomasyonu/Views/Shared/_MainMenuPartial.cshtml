@@ -1,4 +1,8 @@
-﻿<div class="navbar-default sidebar" role="navigation">
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+
+<div class="navbar-default sidebar" role="navigation">
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
             <li class="sidebar-search hidden-sm hidden-md hidden-lg">
@@ -11,75 +15,75 @@
                 </div>
                 <!-- /input-group -->
             </li>
-            <li class="nav-small-cap m-t-10">--- Ana Menü</li>
+            <li class="nav-small-cap m-t-10">--- @Localizer["AnaMenu"]</li>
             @if (User.IsInRole("Admin"))
             {
                 <li>
                     <a class="waves-effect" asp-area="" asp-controller="Admin" asp-action="Index">
-                        <i data-icon="Z" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Anasayfa</span>
+                        <i data-icon="Z" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">@Localizer["AnaSayfa"]</span>
                     </a>
                 </li>
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-list fa-fw"></i>
-                        <span class="hide-menu"> Kategoriler <span class="fa arrow"></span></span>
+                        <span class="hide-menu"> @Localizer["Kategoriler"] <span class="fa arrow"></span></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li> <a asp-area="" asp-controller="Kategoriler" asp-action="Create">Ekle</a> </li>
-                        <li> <a asp-area="" asp-controller="Kategoriler" asp-action="Index">Liste</a> </li>
+                        <li> <a asp-area="" asp-controller="Kategoriler" asp-action="Create">@Localizer["Ekle"]</a> </li>
+                        <li> <a asp-area="" asp-controller="Kategoriler" asp-action="Index">@Localizer["Liste"]</a> </li>
                     </ul>
                 </li>
                 <li>
                     <a href="inbox.html" class="waves-effect">
                         <i data-icon=")" class="linea-icon linea-basic fa-fw"></i>
-                        <span class="hide-menu">Yayınevleri <span class="fa arrow"></span></span>
+                        <span class="hide-menu">@Localizer["Yayinevleri"] <span class="fa arrow"></span></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li> <a asp-area="" asp-controller="Yayinevleri" asp-action="Create">Ekle</a> </li>
-                        <li> <a asp-area="" asp-controller="Yayinevleri" asp-action="Index">Liste</a> </li>
+                        <li> <a asp-area="" asp-controller="Yayinevleri" asp-action="Create">@Localizer["Ekle"]</a> </li>
+                        <li> <a asp-area="" asp-controller="Yayinevleri" asp-action="Index">@Localizer["Liste"]</a> </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-pencil fa-fw"></i>
-                        <span class="hide-menu">Yazarlar<span class="fa arrow"></span></span>
+                        <span class="hide-menu">@Localizer["Yazarlar"]<span class="fa arrow"></span></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li> <a asp-area="" asp-controller="Yazarlar" asp-action="Create">Ekle</a> </li>
-                        <li> <a asp-area="" asp-controller="Yazarlar" asp-action="Index">Liste</a> </li>
+                        <li> <a asp-area="" asp-controller="Yazarlar" asp-action="Create">@Localizer["Ekle"]</a> </li>
+                        <li> <a asp-area="" asp-controller="Yazarlar" asp-action="Index">@Localizer["Liste"]</a> </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-book-open fa-fw"></i>
                         <span class="hide-menu">
-                            Kitaplar<span class="fa arrow"></span>
+                            @Localizer["Kitaplar"]<span class="fa arrow"></span>
                         </span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Create">Ekle</a> </li>
-                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Index">Liste</a> </li>
+                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Create">@Localizer["Ekle"]</a> </li>
+                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Index">@Localizer["Liste"]</a> </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-people fa-fw"></i>
-                        <span class="hide-menu">Üyeler<span class="fa arrow"></span></span>
+                        <span class="hide-menu">@Localizer["Uyeler"]<span class="fa arrow"></span></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li> <a asp-area="" asp-controller="Uyeler" asp-action="Create">Ekle</a> </li>
-                        <li> <a asp-area="" asp-controller="Uyeler" asp-action="Index">Liste</a> </li>
+                        <li> <a asp-area="" asp-controller="Uyeler" asp-action="Create">@Localizer["Ekle"]</a> </li>
+                        <li> <a asp-area="" asp-controller="Uyeler" asp-action="Index">@Localizer["Liste"]</a> </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-calender fa-fw"></i>
-                        <span class="hide-menu">Ödünç Kitap İşlemleri<span class="fa arrow"></span></span>
+                        <span class="hide-menu">@Localizer["OduncKitapIslemleri"]<span class="fa arrow"></span></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="Create">Ödünç Kitap Ver</a> </li>
-                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="Index">Ödünçte Olan Kitaplar</a> </li>
-                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="List">Getirilen Kitaplar</a> </li>
+                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="Create">@Localizer["OduncKitapVer"]</a> </li>
+                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="Index">@Localizer["OduncteOlanKitaplar"]</a> </li>
+                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="List">@Localizer["GetirilenKitaplar"]</a> </li>
                     </ul>
                 </li>
             }
@@ -89,26 +93,26 @@
                     <a href="#" class="waves-effect">
                         <i class="icon-book-open fa-fw"></i>
                         <span class="hide-menu">
-                            Kitaplar<span class="fa arrow"></span>
+                            @Localizer["Kitaplar"]<span class="fa arrow"></span>
                         </span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Index">Liste</a> </li>
+                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Index">@Localizer["Liste"]</a> </li>
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-calender fa-fw"></i>
-                        <span class="hide-menu">Ödünç Kitap İşlemleri<span class="fa arrow"></span></span>
+                        <span class="hide-menu">@Localizer["OduncKitapİslemleri"]<span class="fa arrow"></span></span>
                     </a>
                     <ul class="nav nav-second-level">
-                        <li> <a asp-controller="OduncKitapIslemleri" asp-action="IndexUser">Ödünç Aldığım Kitaplar</a> </li>
+                        <li> <a asp-controller="OduncKitapIslemleri" asp-action="IndexUser">@Localizer["OduncAldigimKitaplar"]</a> </li>
                     </ul>
                 </li>
             }
             <li>
                 <a href="javascript:void(0)" class="waves-effect" onclick="document.frmCikis.submit();">
-                    <i class="icon-logout fa-fw"></i> <span class="hide-menu">Güvenli Çıkış</span>
+                    <i class="icon-logout fa-fw"></i> <span class="hide-menu">@Localizer["GuvenliCikis"]</span>
                 </a>
                 <form name="frmCikis" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Admin", new { area = "" })">
                 </form>
