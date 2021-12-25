@@ -33,8 +33,8 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 
 ### Task List
 - [X] WebApi eklenecek.
-- [x] DbInitializer eklenecek. 
-- [ ] Çoklu Dil desteği eklenecek.
-- [ ] Frontend eklenecek.
+- [X] DbInitializer eklenecek. 
+- [X] Çoklu Dil desteği eklenecek.
+- [X] Frontend eklenecek.
 - [ ] Yetkilendirme ayarlanacak.
 - [ ] Uygulama test edilecek.
