@@ -36,5 +36,5 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 - [X] DbInitializer eklenecek. 
 - [X] Çoklu Dil desteği eklenecek.
 - [X] Frontend eklenecek.
-- [ ] Yetkilendirme ayarlanacak.
+- [X] Yetkilendirme ayarlanacak.
 - [ ] Uygulama test edilecek.
