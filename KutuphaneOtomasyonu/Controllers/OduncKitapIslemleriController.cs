@@ -1,6 +1,7 @@
 ﻿using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,30 +10,43 @@ using System.Threading.Tasks;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class OduncKitapIslemleriController : Controller
     {
         private readonly KutuphaneDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
 
-        public OduncKitapIslemleriController(KutuphaneDbContext context)
+        public OduncKitapIslemleriController(KutuphaneDbContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: OduncKitapIslemleri
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             var kutuphaneDbContext = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Include(o => o.Kitap.Yazar).Include(o => o.Kitap.Yayinevi).Where(x => x.GetirdigiTarih == null);
             return View(await kutuphaneDbContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> List()
         {
             var kutuphaneDbContext = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Include(o => o.Kitap.Yazar).Include(o => o.Kitap.Yayinevi).Where(x => x.GetirdigiTarih != null);
             return View(await kutuphaneDbContext.ToListAsync());
         }
 
+        public async Task<IActionResult> IndexUser()
+        {
+            string userID = _userManager.GetUserId(User);
+
+            var kutuphaneDbContext = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Include(o => o.Kitap.Yazar).Include(o => o.Kitap.Yayinevi).Where(x => x.UserId.ToString() == userID);
+            return View(await kutuphaneDbContext.ToListAsync());
+        }
+
         // GET: OduncKitapIslemleri/Details/5
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -53,6 +67,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // GET: OduncKitapIslemleri/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             // adedi 0'dan büyük olanlar
@@ -70,6 +85,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,KitapId,UserId,AlisTarihi,GetirecegiTarih,GetirdigiTarih")] OduncKitap oduncKitap)
         {
             if (ModelState.IsValid)
@@ -100,6 +116,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         // GET: OduncKitapIslemleri/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -126,6 +143,7 @@ namespace KutuphaneOtomasyonu.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,KitapId,UserId,AlisTarihi,GetirecegiTarih,GetirdigiTarih")] OduncKitap oduncKitap)
         {
             if (id != oduncKitap.Id)
@@ -163,6 +181,7 @@ namespace KutuphaneOtomasyonu.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public JsonResult GetirdiOlarakIsaretleJSON(int GetirilenKitapId)
         {
             var oduncKitap = _context.OduncKitaplar.Find(GetirilenKitapId);
