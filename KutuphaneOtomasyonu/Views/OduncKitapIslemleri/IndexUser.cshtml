@@ -1,0 +1,142 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model IEnumerable<KutuphaneOtomasyonu.Models.OduncKitap>
+
+@{
+    ViewData["Title"] = Localizer["Odunc"];
+}
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">@Localizer["Odunc"]</div>
+            <div class="panel-wrapper collapse in">
+                <div class="panel-body">
+                    <table id="tblOduncVerilenKitaplar" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Kitap.KitapId) / @Html.DisplayNameFor(model => model.Kitap.Barkod) / @Html.DisplayNameFor(model => model.Kitap.Ad) / @Localizer["Yazar"] / @Html.DisplayNameFor(model => model.Kitap.Yayinevi.Adi)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.User)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AlisTarihi)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GetirecegiTarih)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GetirdigiTarih)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kitap.KitapId) / @Html.DisplayFor(modelItem => item.Kitap.Barkod) / @Html.DisplayFor(modelItem => item.Kitap.Ad) / @Html.DisplayFor(modelItem => item.Kitap.Yazar.Ad) @Html.DisplayFor(modelItem => item.Kitap.Yazar.Soyad) / @Html.DisplayFor(modelItem => item.Kitap.Yayinevi.Adi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.Adi) @Html.DisplayFor(modelItem => item.User.Soyadi) (@Html.DisplayFor(modelItem => item.User.Email))
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AlisTarihi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GetirecegiTarih)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GetirdigiTarih)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+            $('#tblOduncVerilenKitaplar').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/tr.json'
+                },
+                dom: 'Bfrtip',
+                autoWidth: true,
+                buttons: [ //http://jsfiddle.net/andrew_safwat/cn1n060L/
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4]
+                        }
+                    }
+                ]
+            });
+        });
+
+        function GetirdiOlarakIsaretle() {
+            // ödünç verilen kitap getirildi olarak işaretlendiğinde çalışacak olan event
+            var data = {
+                GetirilenKitapId: $("button#btnGetirdiOlarakIsaretle").val()
+            };
+
+            $.ajax({
+                type: 'Post',
+                url: '/OduncKitapIslemleri/GetirdiOlarakIsaretleJSON',
+                data: data,
+                dataType: 'Json',
+                contentType: 'application/x-www-form-urlencoded', //https://stackoverflow.com/questions/55054512/ajax-post-int-parameter-in-asp-net-core
+                success: function (response) {
+                    if (response == "true") {
+                        //swal ile ekrana mesaj veriyoruz.
+                        swal({
+                            title: @Localizer["Basarili"],
+                            text: @Localizer["Getirdi"],
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonColor: "green",
+                            confirmButtonText: "Tamam",
+                            closeOnConfirm: false
+                        }, function () {
+                            location.reload();
+                        });
+                    } else {
+                        //swal ile ekrana mesaj veriyoruz.
+                        swal({
+                            title: @Localizer["Hata"],
+                            text: @Localizer["Getirmedi"],
+                            type: "error",
+                            showCancelButton: false,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Tamam",
+                            closeOnConfirm: false
+                        }, function () {
+                            location.reload();
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+}
