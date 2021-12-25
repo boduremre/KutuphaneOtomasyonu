@@ -24,7 +24,14 @@
                                 <img src="~/images/logo_frontend.png" alt="">
                             </a>
                         </div>
-                        <div class="col-lg-9">
+                        <div class="col-lg-6">
+                            <div class="header-search-block">
+                                <input type="text" placeholder="Kitap Ara..." id="kitapAraHomePage" list="kitaplarListesi" onchange="goBookDetail(this)">
+                                <datalist id="kitaplarListesi">
+                                </datalist>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
                             <div class="header-search-block flex-sm-right">
                                 @await Html.PartialAsync("_SelectLanguagePartial")
                             </div>
@@ -36,24 +43,24 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-3">
-                            <nav class="category-nav white-nav">
+                            <!--<nav class="category-nav white-nav">
                                 <div>
                                     <a href="javascript:void(0)" class="category-trigger">
                                         <i class="fa fa-bars"></i>Kategoriler
                                     </a>
-                                    <ul class="category-menu">
-                                        @*@foreach (var cat in ViewBag.Categories)
-                                            {
-                                                <li class="cat-item">
-                                                    <a href="#@cat.KategoriId">@cat.KategoriAdi</a>
-                                                </li>
-                                            }*@
-                                        <li class="cat-item">
+                                    <ul class="category-menu">-->
+                            @*@foreach (var cat in ViewBag.Categories)
+                                {
+                                    <li class="cat-item">
+                                        <a href="#@cat.KategoriId">@cat.KategoriAdi</a>
+                                    </li>
+                                }*@
+                            <!--<li class="cat-item">
                                             <a href="#0">Genel</a>
                                         </li>
                                     </ul>
                                 </div>
-                            </nav>
+                            </nav>-->
                         </div>
                         <div class="col-lg-9">
                             @await Html.PartialAsync("_FrontEndSiteMenu")
@@ -80,6 +87,24 @@
     <script src="~/js/plugins.js"></script>
     <script src="~/js/ajax-mail.js"></script>
     <script src="~/js/custom-frontend.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'Post',
+                url: '/Kitaplar/KitapGetir',
+                dataType: 'Json',
+                contentType: 'application/x-www-form-urlencoded',
+                success: function (response) {
+                    $.each(response, function (i, item) {
+                        $("#kitaplarListesi").append('<option value="' + item.ad + '">' + item.ad + '</option>');
+                    });
+                }
+            });
+        });
+
+        function goBookDetail(elem) {
+        }
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 

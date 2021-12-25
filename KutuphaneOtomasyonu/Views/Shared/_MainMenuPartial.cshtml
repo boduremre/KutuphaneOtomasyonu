@@ -12,75 +12,100 @@
                 <!-- /input-group -->
             </li>
             <li class="nav-small-cap m-t-10">--- Ana Menü</li>
-            <li>
-                <a class="waves-effect" asp-area="" asp-controller="Admin" asp-action="Index">
-                    <i data-icon="Z" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Anasayfa</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#" class="waves-effect">
-                    <i class="icon-list fa-fw"></i>
-                    <span class="hide-menu"> Kategoriler <span class="fa arrow"></span></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li> <a asp-area="" asp-controller="Kategoriler" asp-action="Create">Ekle</a> </li>
-                    <li> <a asp-area="" asp-controller="Kategoriler" asp-action="Index">Liste</a> </li>
-                </ul>
-            </li>
-            <li>
-                <a href="inbox.html" class="waves-effect">
-                    <i data-icon=")" class="linea-icon linea-basic fa-fw"></i>
-                    <span class="hide-menu">Yayınevleri <span class="fa arrow"></span></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li> <a asp-area="" asp-controller="Yayinevleri" asp-action="Create">Ekle</a> </li>
-                    <li> <a asp-area="" asp-controller="Yayinevleri" asp-action="Index">Liste</a> </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="waves-effect">
-                    <i class="icon-pencil fa-fw"></i>
-                    <span class="hide-menu">Yazarlar<span class="fa arrow"></span></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li> <a asp-area="" asp-controller="Yazarlar" asp-action="Create">Ekle</a> </li>
-                    <li> <a asp-area="" asp-controller="Yazarlar" asp-action="Index">Liste</a> </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="waves-effect">
-                    <i class="icon-book-open fa-fw"></i>
-                    <span class="hide-menu">
-                        Kitaplar<span class="fa arrow"></span>
-                    </span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Create">Ekle</a> </li>
-                    <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Index">Liste</a> </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="waves-effect">
-                    <i class="icon-people fa-fw"></i>
-                    <span class="hide-menu">Üyeler<span class="fa arrow"></span></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li> <a asp-area="" asp-controller="Uyeler" asp-action="Create">Ekle</a> </li>
-                    <li> <a asp-area="" asp-controller="Uyeler" asp-action="Index">Liste</a> </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#" class="waves-effect">
-                    <i class="icon-calender fa-fw"></i>
-                    <span class="hide-menu">Ödünç Kitap İşlemleri<span class="fa arrow"></span></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="Create">Ödünç Kitap Ver</a> </li>
-                    <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="Index">Ödünçte Olan Kitaplar</a> </li>
-                    <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="List">Getirilen Kitaplar</a> </li>
-                </ul>
-            </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    <a class="waves-effect" asp-area="" asp-controller="Admin" asp-action="Index">
+                        <i data-icon="Z" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Anasayfa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-list fa-fw"></i>
+                        <span class="hide-menu"> Kategoriler <span class="fa arrow"></span></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li> <a asp-area="" asp-controller="Kategoriler" asp-action="Create">Ekle</a> </li>
+                        <li> <a asp-area="" asp-controller="Kategoriler" asp-action="Index">Liste</a> </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="inbox.html" class="waves-effect">
+                        <i data-icon=")" class="linea-icon linea-basic fa-fw"></i>
+                        <span class="hide-menu">Yayınevleri <span class="fa arrow"></span></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li> <a asp-area="" asp-controller="Yayinevleri" asp-action="Create">Ekle</a> </li>
+                        <li> <a asp-area="" asp-controller="Yayinevleri" asp-action="Index">Liste</a> </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-pencil fa-fw"></i>
+                        <span class="hide-menu">Yazarlar<span class="fa arrow"></span></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li> <a asp-area="" asp-controller="Yazarlar" asp-action="Create">Ekle</a> </li>
+                        <li> <a asp-area="" asp-controller="Yazarlar" asp-action="Index">Liste</a> </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-book-open fa-fw"></i>
+                        <span class="hide-menu">
+                            Kitaplar<span class="fa arrow"></span>
+                        </span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Create">Ekle</a> </li>
+                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Index">Liste</a> </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-people fa-fw"></i>
+                        <span class="hide-menu">Üyeler<span class="fa arrow"></span></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li> <a asp-area="" asp-controller="Uyeler" asp-action="Create">Ekle</a> </li>
+                        <li> <a asp-area="" asp-controller="Uyeler" asp-action="Index">Liste</a> </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-calender fa-fw"></i>
+                        <span class="hide-menu">Ödünç Kitap İşlemleri<span class="fa arrow"></span></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="Create">Ödünç Kitap Ver</a> </li>
+                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="Index">Ödünçte Olan Kitaplar</a> </li>
+                        <li> <a asp-area="" asp-controller="OduncKitapIslemleri" asp-action="List">Getirilen Kitaplar</a> </li>
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-book-open fa-fw"></i>
+                        <span class="hide-menu">
+                            Kitaplar<span class="fa arrow"></span>
+                        </span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li> <a asp-area="" asp-controller="Kitaplar" asp-action="Index">Liste</a> </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-calender fa-fw"></i>
+                        <span class="hide-menu">Ödünç Kitap İşlemleri<span class="fa arrow"></span></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li> <a asp-controller="OduncKitapIslemleri" asp-action="IndexUser">Ödünç Aldığım Kitaplar</a> </li>
+                    </ul>
+                </li>
+            }
             <li>
                 <a href="javascript:void(0)" class="waves-effect" onclick="document.frmCikis.submit();">
                     <i class="icon-logout fa-fw"></i> <span class="hide-menu">Güvenli Çıkış</span>

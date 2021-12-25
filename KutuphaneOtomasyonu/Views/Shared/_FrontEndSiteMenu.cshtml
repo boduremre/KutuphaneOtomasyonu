@@ -1,14 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
 <div class="main-navigation flex-lg-right">
     <ul class="main-menu menu-right main-menu--white li-last-0">
         <li class="menu-item">
             <a asp-controller="Home" asp-action="Index">Anasayfa</a>
         </li>
-        <li class="menu-item has-children">
+        <li class="menu-item">
+            <a asp-controller="Kitaplar" asp-action="Index">Kitaplar</a>
+        </li>
+        @*<li class="menu-item has-children">
             <a href="javascript:void(0)">
                 Menü <i class="fas fa-chevron-down dropdown-arrow"></i>
             </a>
@@ -19,15 +21,38 @@
                 <li> <a href="index-4.html">Home Four</a></li>
                 <li> <a href="index-5.html">Home Five</a></li>
             </ul>
-        </li>
+        </li>*@
         <li class="menu-item">
             <a asp-controller="Home" asp-action="Contact">İletişim</a>
         </li>
-        <li class="menu-item">
-            <a href="/Identity/Account/Login">Giriş</a>
-        </li>
-        <li class="menu-item">
-            <a href="/Identity/Account/Register">Kayıt</a>
-        </li>
+        @if (!SignInManager.IsSignedIn(User))
+        {
+            <li class="menu-item">
+                <a href="/Identity/Account/Login">Giriş</a>
+            </li>
+
+
+            <li class="menu-item">
+                <a href="/Identity/Account/Register">Kayıt</a>
+            </li>
+        }
+        else
+        {
+            <li class="menu-item has-children">
+                <a href="javascript:void(0)" style="text-transform: lowercase;">
+                    @User.Identity.Name <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                <ul class="sub-menu">
+                    <li> <a asp-action="Profile" asp-controller="Admin">Profil</a></li>
+                    <li> <a asp-action="Index" asp-controller="Kitaplar">Kitaplar</a></li>
+                    <li> <a asp-action="IndexUser" asp-controller="OduncKitapIslemleri">Aldığım Kitaplar</a></li>
+                    <li>
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <button type="submit">Çıkış</button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        }
     </ul>
 </div>

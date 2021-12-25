@@ -13,6 +13,7 @@
             </li>
         </ul>
         <ul class="nav navbar-top-links navbar-right pull-right">
+            <li class="right-side-toggle"> <a class="waves-effect waves-light" asp-controller="Home" asp-action="Index"><i class="ti-home"></i> Siteyi Görüntüle</a></li>
             @if (SignInManager.IsSignedIn(User))
             {
                 <li class="dropdown">
