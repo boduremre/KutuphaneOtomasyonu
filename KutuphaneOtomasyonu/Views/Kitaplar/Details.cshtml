@@ -111,8 +111,15 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a asp-action="Edit" asp-route-id="@Model.KitapId" class="btn btn-info btn-sm">@Localizer["Duzenle"]</a>
-                    <a asp-action="Index" class="btn btn-danger btn-sm">@Localizer["Iptal"]</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.KitapId" class="btn btn-info btn-sm">@Localizer["Duzenle"]</a>
+                        <a asp-action="Index" class="btn btn-danger btn-sm">@Localizer["Iptal"]</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Index" class="btn btn-danger btn-sm">@Localizer["Iptal"]</a>
+                    }
                 </div>
             </div>
         </div>

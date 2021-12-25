@@ -83,9 +83,16 @@
                                         @Html.DisplayFor(modelItem => item.YerBilgisi)
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.KitapId" class="btn btn-info btn-sm">@Localizer["Duzenle"]</a>
-                                        <a asp-action="Details" asp-route-id="@item.KitapId" class="btn btn-primary btn-sm">@Localizer["Detay"]</a>
-                                        <a asp-action="Delete" asp-route-id="@item.KitapId" class="btn btn-danger btn-sm">@Localizer["Sil"]</a>
+                                        @if (User.IsInRole("Admin"))
+                                        {
+                                            <a asp-action="Edit" asp-route-id="@item.KitapId" class="btn btn-info btn-sm">@Localizer["Duzenle"]</a>
+                                            <a asp-action="Details" asp-route-id="@item.KitapId" class="btn btn-primary btn-sm">@Localizer["Detay"]</a>
+                                            <a asp-action="Delete" asp-route-id="@item.KitapId" class="btn btn-danger btn-sm">@Localizer["Sil"]</a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-action="Details" asp-route-id="@item.KitapId" class="btn btn-primary btn-sm">@Localizer["Detay"]</a>
+                                        }
                                     </td>
                                 </tr>
                             }
