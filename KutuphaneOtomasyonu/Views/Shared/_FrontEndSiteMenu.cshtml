@@ -27,6 +27,13 @@
         <li class="menu-item">
             <a asp-controller="Home" asp-action="Contact">@Localizer["Iletisim"]</a>
         </li>
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="menu-item">
+                <a asp-controller="Admin" asp-action="Index">Panel</a>
+            </li>
+        }
+
         @if (!SignInManager.IsSignedIn(User))
         {
             <li class="menu-item">
