@@ -1,39 +1,41 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Localization
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
+@inject IViewLocalizer Localizer
 
 <div class="main-navigation flex-lg-right">
     <ul class="main-menu menu-right main-menu--white li-last-0">
         <li class="menu-item">
-            <a asp-controller="Home" asp-action="Index">Anasayfa</a>
+            <a asp-controller="Home" asp-action="Index">@Localizer["Anasayfa"]</a>
         </li>
         <li class="menu-item">
-            <a asp-controller="Kitaplar" asp-action="Index">Kitaplar</a>
+            <a asp-controller="Kitaplar" asp-action="Index">@Localizer["Kitaplar"]</a>
         </li>
         @*<li class="menu-item has-children">
-            <a href="javascript:void(0)">
-                Menü <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </a>
-            <ul class="sub-menu">
-                <li> <a href="index.html">Home One</a></li>
-                <li> <a href="index-2.html">Home Two</a></li>
-                <li> <a href="index-3.html">Home Three</a></li>
-                <li> <a href="index-4.html">Home Four</a></li>
-                <li> <a href="index-5.html">Home Five</a></li>
-            </ul>
-        </li>*@
+                <a href="javascript:void(0)">
+                    Menü <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </a>
+                <ul class="sub-menu">
+                    <li> <a href="index.html">Home One</a></li>
+                    <li> <a href="index-2.html">Home Two</a></li>
+                    <li> <a href="index-3.html">Home Three</a></li>
+                    <li> <a href="index-4.html">Home Four</a></li>
+                    <li> <a href="index-5.html">Home Five</a></li>
+                </ul>
+            </li>*@
         <li class="menu-item">
-            <a asp-controller="Home" asp-action="Contact">İletişim</a>
+            <a asp-controller="Home" asp-action="Contact">@Localizer["Iletisim"]</a>
         </li>
         @if (!SignInManager.IsSignedIn(User))
         {
             <li class="menu-item">
-                <a href="/Identity/Account/Login">Giriş</a>
+                <a href="/Identity/Account/Login">@Localizer["Login"]</a>
             </li>
 
 
             <li class="menu-item">
-                <a href="/Identity/Account/Register">Kayıt</a>
+                <a href="/Identity/Account/Register">@Localizer["Kayit"]</a>
             </li>
         }
         else
@@ -43,12 +45,12 @@
                     @User.Identity.Name <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </a>
                 <ul class="sub-menu">
-                    <li> <a asp-action="Profile" asp-controller="Admin">Profil</a></li>
-                    <li> <a asp-action="Index" asp-controller="Kitaplar">Kitaplar</a></li>
-                    <li> <a asp-action="IndexUser" asp-controller="OduncKitapIslemleri">Aldığım Kitaplar</a></li>
+                    <li> <a asp-action="Profile" asp-controller="Admin">@Localizer["Profil"]</a></li>
+                    <li> <a asp-action="Index" asp-controller="Kitaplar">@Localizer["Kitaplar"]</a></li>
+                    <li> <a asp-action="IndexUser" asp-controller="OduncKitapIslemleri">@Localizer["AldigimKitaplar"]</a></li>
                     <li>
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                            <button type="submit">Çıkış</button>
+                            <button type="submit">@Localizer["Cikis"]</button>
                         </form>
                     </li>
                 </ul>
