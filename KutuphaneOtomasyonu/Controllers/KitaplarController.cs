@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
+    [Authorize]
     public class KitaplarController : Controller
     {
         private readonly KutuphaneDbContext _context;

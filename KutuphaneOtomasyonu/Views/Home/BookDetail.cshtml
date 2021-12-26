@@ -1,0 +1,71 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+@model KutuphaneOtomasyonu.Models.Kitap
+
+@{
+    Layout = "__Layout";
+    ViewData["Title"] = Localizer["KitapDetay"];
+}
+<section class="breadcrumb-section">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index">@Localizer["Home"]</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Books">@Localizer["Book"]</a></li>
+                    <li class="breadcrumb-item active">@Localizer["KitapDetail"]</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<main class="inner-page-sec-padding-bottom">
+    <div class="container">
+        <div class="row  mb--60">
+            <div class="col-lg-5 mb--30">
+                <!-- Product Details Slider Big Image-->
+                <div class="product-details-slider sb-slick-slider arrow-type-two">
+                    <div class="single-slide">
+                        <img src="@Model.KapakResmi" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="product-details-info pl-lg--30 ">
+                    <p class="tag-block">
+                        Etiketler:
+                        <a href="#">@Model.Ad</a>,
+                        <a href="#">@Model.OzgunAd</a>,
+                        <a href="#">@Model.Kategori.KategoriAdi</a>,
+                        <a href="#">@Model.Yazar.Ad @Model.Yazar.Soyad</a>
+                    </p>
+                    <h3 class="product-title">@Model.Ad</h3>
+                    <ul class="list-unstyled">
+                        <li>@Html.DisplayNameFor(model => model.OzgunAd): <span class="list-value">@Model.OzgunAd</span></li>
+                        <li>@Html.DisplayNameFor(model => model.Kategori.KategoriAdi): <span class="list-value">@Model.Kategori.KategoriAdi</span></li>
+                        <li>@Html.DisplayNameFor(model => model.SayfaSayisi): <a href="#" class="list-value font-weight-bold"> @Model.SayfaSayisi</a></li>
+                        <li>@Html.DisplayNameFor(model => model.Adet): <span class="list-value"> @Model.Adet</span></li>
+                        <li>@Html.DisplayNameFor(model => model.BaskiYili): <span class="list-value"> @Model.BaskiYili</span></li>
+                        <li>@Html.DisplayNameFor(model => model.Dil): <span class="list-value"> @Model.Dil</span></li>
+                        <li>@Html.DisplayNameFor(model => model.Barkod): <span class="list-value"> @Model.Barkod</span></li>
+                        <li>@Html.DisplayNameFor(model => model.ISBN): <span class="list-value"> @Model.ISBN</span></li>
+                        <li>@Html.DisplayNameFor(model => model.Ceviren): <span class="list-value"> @Model.Ceviren</span></li>
+                        <li>@Html.DisplayNameFor(model => model.TeminBicimi): <span class="list-value"> @Model.TeminBicimi</span></li>
+                        <li>@Html.DisplayNameFor(model => model.EdinmeBedeli): <span class="list-value"> @Model.EdinmeBedeli₺</span></li>
+                        <li>@Html.DisplayNameFor(model => model.Yazar.Ad): <span class="list-value"> @Model.Yazar.Ad @Model.Yazar.Soyad</span></li>
+                        <li>@Html.DisplayNameFor(model => model.Yayinevi.Adi): <span class="list-value"> @Model.Yayinevi.Adi</span></li>
+                    </ul>
+                    <article class="product-details-article">
+                        <h4 class="sr-only">Product Summery</h4>
+                        <p>
+                            Long printed dress with thin adjustable straps. V-neckline and wiring under the Dust
+                            with ruffles at the bottom of the
+                            dress.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

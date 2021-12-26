@@ -10,7 +10,7 @@
             <a asp-controller="Home" asp-action="Index">@Localizer["Anasayfa"]</a>
         </li>
         <li class="menu-item">
-            <a asp-controller="Kitaplar" asp-action="Index">@Localizer["Kitaplar"]</a>
+            <a asp-controller="Home" asp-action="Books">@Localizer["Kitaplar"]</a>
         </li>
         @*<li class="menu-item has-children">
                 <a href="javascript:void(0)">
@@ -46,7 +46,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li> <a asp-action="Profile" asp-controller="Admin">@Localizer["Profil"]</a></li>
-                    <li> <a asp-action="Index" asp-controller="Kitaplar">@Localizer["Kitaplar"]</a></li>
+                    <li> <a asp-action="Books" asp-controller="Home">@Localizer["Kitaplar"]</a></li>
                     <li> <a asp-action="IndexUser" asp-controller="OduncKitapIslemleri">@Localizer["AldigimKitaplar"]</a></li>
                     <li>
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
