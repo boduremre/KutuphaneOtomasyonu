@@ -117,37 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dashboard" xml:space="preserve">
-    <value>Yönetim Paneli</value>
+  <data name="eKutuphane" xml:space="preserve">
+    <value>eKütüphane</value>
   </data>
-  <data name="GecikenKitapSayisi" xml:space="preserve">
-    <value>Number of delayed books</value>
+  <data name="KitaplariIncele" xml:space="preserve">
+    <value>Kitapları İncele</value>
   </data>
-  <data name="GunGecikti" xml:space="preserve">
-    <value>The day is late.</value>
+  <data name="KutuphaneOtomasyonu" xml:space="preserve">
+    <value>Kütüphane Otomasyonu</value>
   </data>
-  <data name="GunKaldi" xml:space="preserve">
-    <value>Days left</value>
+  <data name="Slogan" xml:space="preserve">
+    <value>Kitaplarınızı yönetin. &lt;br&gt;Öğrencilerinize ödünç verin.</value>
   </data>
-  <data name="Index" xml:space="preserve">
-    <value>Index</value>
-  </data>
-  <data name="KitaplarListesi" xml:space="preserve">
-    <value>List of borrowed books Last 10 books)</value>
-  </data>
-  <data name="OduncVerilenKitapSayisi" xml:space="preserve">
-    <value>Number of borrowed books</value>
-  </data>
-  <data name="SonKaydedilenKitaplar" xml:space="preserve">
-    <value>Recently saved books</value>
-  </data>
-  <data name="SonKayitOlanUyeler" xml:space="preserve">
-    <value>Last registered members</value>
-  </data>
-  <data name="ToplamTekilKitapSayisi" xml:space="preserve">
-    <value>Total number of individual books</value>
-  </data>
-  <data name="ToplamUyeSayisi" xml:space="preserve">
-    <value>Total Member Count</value>
+  <data name="SonEklenenKitaplar" xml:space="preserve">
+    <value>Son Eklenen Kitaplar</value>
   </data>
 </root>

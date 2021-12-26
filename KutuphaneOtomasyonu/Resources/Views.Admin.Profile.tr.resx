@@ -120,8 +120,23 @@
   <data name="ChangePasswordButton" xml:space="preserve">
     <value>Şifre Değiştir</value>
   </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Mevcut Şifre</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Eposta</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Yeni Şifre</value>
+  </data>
+  <data name="NewPassword1" xml:space="preserve">
+    <value>Yeni Şifre (Tekrar)</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Şifre</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
