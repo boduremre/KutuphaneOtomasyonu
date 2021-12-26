@@ -54,7 +54,7 @@
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-info btn-sm">@Localizer["Duzenle"]</a>
-                                        <button value="@item.Id" id="btnGetirdiOlarakIsaretle" onclick="GetirdiOlarakIsaretle()" class="btn btn-success btn-sm">@Localizer["Getirdi"]</button>
+                                        <a href="javascript:KitabiGetirdiOlarakIsaretle(@item.Id)" class="btn btn-success btn-sm">@Localizer["Getirdi"]</a>
                                     </td>
                                 </tr>
                             }
@@ -68,7 +68,6 @@
 @section Scripts {
     <script>
         $(document).ready(function () {
-
             $('#tblOduncVerilenKitaplar').DataTable({
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/tr.json'
@@ -100,10 +99,10 @@
             });
         });
 
-        function GetirdiOlarakIsaretle() {
+        function KitabiGetirdiOlarakIsaretle(x) {
             // ödünç verilen kitap getirildi olarak işaretlendiğinde çalışacak olan event
             var data = {
-                GetirilenKitapId: $("button#btnGetirdiOlarakIsaretle").val()
+                GetirilenKitapId: x
             };
 
             $.ajax({
@@ -116,8 +115,8 @@
                     if (response == "true") {
                         //swal ile ekrana mesaj veriyoruz.
                         swal({
-                            title: @Localizer["Basarili"],
-                            text: @Localizer["Getirdi"],
+                            title: "Başarılı",
+                            text: "Getirdi Olarak İşaretlendi",
                             type: "success",
                             showCancelButton: false,
                             confirmButtonColor: "green",
@@ -129,8 +128,8 @@
                     } else {
                         //swal ile ekrana mesaj veriyoruz.
                         swal({
-                            title: @Localizer["Hata"],
-                            text: @Localizer["Getirmedi"],
+                            title: "Başarısız",
+                            text: "Getirdi Olarak İşaretlenemedi",
                             type: "error",
                             showCancelButton: false,
                             confirmButtonColor: "#DD6B55",
