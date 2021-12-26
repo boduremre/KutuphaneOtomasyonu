@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using KutuphaneOtomasyonu.Data;
 using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
+    [Authorize]
     public class UyelerController : Controller
     {
         private readonly KutuphaneDbContext _context;
