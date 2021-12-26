@@ -2,6 +2,7 @@
 using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +21,14 @@ namespace KutuphaneOtomasyonu.Controllers
         private readonly KutuphaneDbContext _context;
         private readonly IStringLocalizer<AdminController> _localizer;
         private readonly ILogger<AdminController> _logger;
+        private readonly UserManager<AppUser> _userManager;
 
-        public AdminController(ILogger<AdminController> logger, KutuphaneDbContext context, IStringLocalizer<AdminController> localizer)
+        public AdminController(ILogger<AdminController> logger, KutuphaneDbContext context, IStringLocalizer<AdminController> localizer, UserManager<AppUser> userManager)
         {
             _context = context;
             _localizer = localizer;
             _logger = logger;
+            _userManager = userManager;
         }
 
         [Authorize(Roles = "Admin")]
@@ -44,7 +47,7 @@ namespace KutuphaneOtomasyonu.Controllers
 
         public IActionResult Profile()
         {
-            var appUser = _context.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
+            AppUser appUser = _context.Users.Where(x => x.Email == User.Identity.Name).FirstOrDefault();
             if (appUser == null)
             {
                 return NotFound();
@@ -55,24 +58,83 @@ namespace KutuphaneOtomasyonu.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Profile(Guid id, [Bind("Adi,Soyadi,Cinsiyet,TCKimlik,DogumTarihi,Email,PhoneNumber")] AppUser appUser)
+        public IActionResult Profile(Guid Id, [Bind("Adi,Soyadi,Cinsiyet,TCKimlik,DogumTarihi,Email,PhoneNumber")] AppUser appUser)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(appUser);
-                    await _context.SaveChangesAsync();
+                    var user = _context.Users.First(x => x.Id == Id);
+                    user.TCKimlik = appUser.TCKimlik;
+                    user.Adi = appUser.Adi;
+                    user.Soyadi = appUser.Soyadi;
+                    user.Cinsiyet = appUser.Cinsiyet;
+                    user.DogumTarihi = appUser.DogumTarihi;
+                    user.Email = appUser.Email;
+                    user.NormalizedEmail = appUser.Email;
+                    user.UserName = appUser.Email;
+                    user.NormalizedUserName = appUser.Email;
+                    user.PhoneNumber = appUser.PhoneNumber;
+                    user.PhoneNumberConfirmed = true;
+                    user.EmailConfirmed = true;
+
+                    //_context.Update(user);
+                    if (_context.SaveChanges() > 0)
+                    {
+                        TempData["SuccessMessage"] = "Profil bilgileriniz başarıyla güncellendi!";
+                    }
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (Exception ex)
                 {
-
+                    _logger.LogError(ex.Message.ToString());
                 }
 
-                return RedirectToAction("Profile");
+                return View(appUser);
             }
 
             return View(appUser);
+        }
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            ViewBag.UserId = _userManager.GetUserId(HttpContext.User);
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+
+                // ChangePasswordAsync changes the user password
+                var result = await _userManager.ChangePasswordAsync(user,
+                    model.CurrentPassword, model.NewPassword);
+
+                // The new password did not meet the complexity rules or
+                // the current password is incorrect. Add these errors to
+                // the ModelState and rerender ChangePassword view
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+
+                    return View();
+                }
+
+                TempData["SuccessMessage"] = "Şifreniz başarıyla değiştirildi!";
+                return View();
+            }
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
