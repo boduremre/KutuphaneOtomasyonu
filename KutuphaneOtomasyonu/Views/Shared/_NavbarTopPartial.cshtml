@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
 
@@ -13,17 +15,17 @@
             </li>
         </ul>
         <ul class="nav navbar-top-links navbar-right pull-right">
-            <li class="right-side-toggle"> <a class="waves-effect waves-light" asp-controller="Home" asp-action="Index"><i class="ti-home"></i> Siteyi Görüntüle</a></li>
+            <li class="right-side-toggle"> <a class="waves-effect waves-light" asp-controller="Home" asp-action="Index"><i class="ti-home"></i> @Localizer["SiteyiGoruntule"]</a></li>
             @if (SignInManager.IsSignedIn(User))
             {
                 <li class="dropdown">
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="~/images/users/default.png" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">@User.Identity.Name</b> </a>
                     <ul class="dropdown-menu dropdown-user animated flipInY">
-                        <li><a asp-action="Profile" asp-controller="Admin"><i class="ti-user"></i> Profil</a></li>
+                        <li><a asp-action="Profile" asp-controller="Admin"><i class="ti-user"></i> @Localizer["Profil"]</a></li>
                         <li role="separator" class="divider"></li>
                         <li>
                             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Admin", new { area = "" })">
-                                <button type="submit" class="nav-link btn btn-link text-dark"><i class="fa fa-power-off"></i> Çıkış</button>
+                                <button type="submit" class="nav-link btn btn-link text-dark"><i class="fa fa-power-off"></i> @Localizer["Cikis"]</button>
                             </form>
                         </li>
                     </ul>
@@ -35,8 +37,8 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="~/images/users/genu.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Kullanıcı</b> </a>
                     <ul class="dropdown-menu dropdown-user animated flipInY">
-                        <li><a asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-sign-in"></i> Giriş</a></li>
-                        <li><a asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-user-plus"></i> Kayıt Ol</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-sign-in"></i> @Localizer["Giris"]</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-user-plus"></i> @Localizer["Register"]</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>

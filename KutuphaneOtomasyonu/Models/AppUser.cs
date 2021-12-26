@@ -23,6 +23,7 @@ namespace KutuphaneOtomasyonu.Models
 
         [Display(Name = "Doğum Tarihi")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DogumTarihi { get; set; }
 
         [MaxLength(11)]

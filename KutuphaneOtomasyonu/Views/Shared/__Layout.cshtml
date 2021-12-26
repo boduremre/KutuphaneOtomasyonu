@@ -1,10 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
 <html lang="tr">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@ViewData["Title"] - Kütüphane Otomasyonu</title>
+    <title>@ViewData["Title"] - @Localizer["Baslik"] </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Use Minified Plugins Version For Fast Page Load -->
     <link rel="stylesheet" type="text/css" media="screen" href="~/css/plugins.css" />
@@ -26,7 +29,7 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="header-search-block">
-                                <input type="text" placeholder="Kitap Ara..." id="kitapAraHomePage" list="kitaplarListesi" onchange="goBookDetail(this)">
+                                <input type="text" placeholder="@Localizer["Ara"]" id="kitapAraHomePage" list="kitaplarListesi" onchange="goBookDetail(this)">
                                 <datalist id="kitaplarListesi">
                                 </datalist>
                             </div>
@@ -78,7 +81,7 @@
         <div class="footer-bottom" style="padding: 5px !important;">
             <div class="container">
                 <p class="copyright-text" style="margin-top: 10px !important;">
-                    Copyright © @DateTime.Now.Year.ToString() <a href="#" class="author">Emre Bodur & Sadık Senai</a>. Tüm Hakları Saklıdır.
+                    Copyright © @DateTime.Now.Year.ToString() <a href="#" class="author">Emre Bodur & Sadık Senai</a>. @Localizer["Telif"]
                 </p>
             </div>
         </div>

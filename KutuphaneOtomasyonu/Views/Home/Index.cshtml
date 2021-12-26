@@ -1,6 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
     Layout = "__Layout";
-    ViewData["Title"] = "Anasayfa";
+    ViewData["Title"] = Localizer["Anasayfa"];
 }
 
 <!--=================================
@@ -20,14 +23,13 @@
                         <div class="home-content pl--30">
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <span class="title-mid">Book Mockup</span>
-                                    <h2 class="h2-v2">Hardcover.</h2>
+                                    <span class="title-mid">@Localizer["KutuphaneOtomasyonu"]</span>
+                                    <h2 class="h2-v2">@Localizer["eKutuphane"]</h2>
                                     <p>
-                                        Cover up front of book and
-                                        <br>leave summary
+                                        @Localizer["Slogan"]
                                     </p>
-                                    <a href="shop-grid.html" class="btn btn-outlined--primary">
-                                        Shop Now
+                                    <a asp-action="Index" asp-controller="Kitaplar" class="btn btn-outlined--primary">
+                                        @Localizer["KitaplariIncele"]
                                     </a>
                                 </div>
                             </div>
@@ -41,50 +43,6 @@
 <section class="mb--30">
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-md-6 mt--30">
-                <div class="feature-box h-100">
-                    <div class="icon">
-                        <i class="fas fa-shipping-fast"></i>
-                    </div>
-                    <div class="text">
-                        <h5></h5>
-                        <p> Kategori</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mt--30">
-                <div class="feature-box h-100">
-                    <div class="icon">
-                        <i class="fas fa-redo-alt"></i>
-                    </div>
-                    <div class="text">
-                        <h5>Money Back Guarantee</h5>
-                        <p>100% money back</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mt--30">
-                <div class="feature-box h-100">
-                    <div class="icon">
-                        <i class="fas fa-piggy-bank"></i>
-                    </div>
-                    <div class="text">
-                        <h5>Cash On Delivery</h5>
-                        <p>Lorem ipsum dolor amet</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mt--30">
-                <div class="feature-box h-100">
-                    <div class="icon">
-                        <i class="fas fa-life-ring"></i>
-                    </div>
-                    <div class="text">
-                        <h5>Help &amp; Support</h5>
-                        <p>Call us : + 0123.4567.89</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -94,7 +52,7 @@ Deal of the day
 <section class="section-margin">
     <div class="container">
         <div class="promo-section-heading">
-            <h2>Son Eklenen Kitaplar</h2>
+            <h2>@Localizer["SonEklenenKitaplar"]</h2>
         </div>
         <div class="product-slider with-countdown  slider-border-single-row sb-slick-slider" data-slick-setting='{
                 "autoplay": true,
@@ -128,27 +86,27 @@ Deal of the day
                                         <img src="@kitap.KapakResmi" alt="">
                                     </a>
                                     @*<div class="hover-btns">
-                                        <a href="cart.html" class="single-btn">
-                                            <i class="fas fa-shopping-basket"></i>
-                                        </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal"
-                                           class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>*@
+                                            <a href="cart.html" class="single-btn">
+                                                <i class="fas fa-shopping-basket"></i>
+                                            </a>
+                                            <a href="wishlist.html" class="single-btn">
+                                                <i class="fas fa-heart"></i>
+                                            </a>
+                                            <a href="compare.html" class="single-btn">
+                                                <i class="fas fa-random"></i>
+                                            </a>
+                                            <a href="#" data-toggle="modal" data-target="#quickModal"
+                                               class="single-btn">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                        </div>*@
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             }
-            </div>
         </div>
-    </section>
-    
+    </div>
+</section>
+

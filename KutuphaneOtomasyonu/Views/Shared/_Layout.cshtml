@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
-                            <li><a asp-area="" asp-controller="Home" asp-action="Index">Yönetim Paneli</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Dashboard"]</a></li>
                             <li class="active">@ViewData["Title"]</li>
                         </ol>
                     </div>
@@ -66,7 +66,7 @@
                 @RenderBody()
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> @DateTime.Now.Year.ToString() &copy; emrebodur.com , senaisadik@gmail.com</footer>
+            <footer class="footer text-center"> @DateTime.Now.Year.ToString() &copy; emrebodur.com & senaisadik@gmail.com</footer>
         </div>
         <!-- /#page-wrapper -->
     </div>

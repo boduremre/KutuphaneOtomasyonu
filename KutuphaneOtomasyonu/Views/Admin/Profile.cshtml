@@ -1,12 +1,5 @@
 ﻿@model KutuphaneOtomasyonu.Models.AppUser
 @using Microsoft.AspNetCore.Mvc.Localization
-
-@* The IViewLocalizer can be injected into the view. It does two things of interest:
-    1. It can HTML encode *parameters* passed to resource strings (not the resource strings themselves, as they may contain
-       HTML) automatically, and return the result as an IHtmlContent so Razor won't HTML encode it again;
-    2. It looks for localization resources for this view based on the view path, e.g. if the view's path is
-       "MyApplication/Views/Home/Index.cshtml", then the corresponding resource base path will be "MyApplication.Views.Home.Index" *@
-
 @inject IViewLocalizer Localizer
 @{
     ViewData["Title"] = Localizer["Profile"];
@@ -70,14 +63,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Email" class="col-md-12">Eposta</label>
+                            <label asp-for="Email" class="col-md-12">@Localizer["Email"]</label>
                             <div class="col-md-12">
                                 <input type="email" asp-for="Email" class="form-control form-control-line" />
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label asp-for="PhoneNumber" class="col-md-12">Telefon</label>
+                            <label asp-for="PhoneNumber" class="col-md-12">@Localizer["Phone"]</label>
                             <div class="col-md-12">
                                 <input asp-for="PhoneNumber" class="form-control form-control-line" data-mask="(999) 999-9999">
                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
@@ -96,19 +89,19 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <input type="hidden" asp-for="Id" />
                         <div class="form-group">
-                            <label class="col-md-12">Mevcut Şifre</label>
+                            <label class="col-md-12">@Localizer["CurrentPassword"]</label>
                             <div class="col-md-12">
                                 <input type="password" class="form-control form-control-line" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12">Yeni Şifre</label>
+                            <label class="col-md-12">@Localizer["NewPassword"]</label>
                             <div class="col-md-12">
                                 <input type="password" class="form-control form-control-line" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-md-12">Yeni Şifre (Tekrar)</label>
+                            <label class="col-md-12">@Localizer["NewPassword1"]</label>
                             <div class="col-md-12">
                                 <input type="password" class="form-control form-control-line" />
                             </div>
