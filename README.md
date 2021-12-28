@@ -37,4 +37,4 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 - [X] Çoklu Dil desteği eklenecek.
 - [X] Frontend eklenecek.
 - [X] Yetkilendirme ayarlanacak.
-- [ ] Uygulama test edilecek.
+- [X] Uygulama test edilecek.
