@@ -36,8 +36,9 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 - [X] DbInitializer eklenecek. 
 - [X] Çoklu Dil desteği eklenecek.
 - [X] Frontend eklenecek.
-- [X] Yetkilendirme ayarlanacak.
-- [X] Uygulama test edilecek.
+- [ ] Yetkilendirme ayarlanacak.
+- [ ] Faker kütüphanesini eklenecek.
+- [ ] Uygulama test edilecek.
 
 ### Değerlendirme ve Diğer Uyarılar
 Bu uygulama 100 puan almıştır. Eğitim amaçlı olmak kaydı ile ücretsiz bir şekilde kullanılabilir.
