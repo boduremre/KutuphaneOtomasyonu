@@ -253,8 +253,9 @@ namespace KutuphaneOtomasyonu.Data
                             TeminBicimi = "Satın Alma",
                             DemirbasNo = "0000001",
                             ISBN = "9786054985326",
-                            KapakResmi = "https://img.kitapyurdu.com/v1/getImage/fn:9950059/wh:true/wi:220",
-                            YerBilgisi = "B840-R5-S8"
+                            KapakResmi = "https://ynzuxbdewn9x.merlincdn.net/productimages/752839/big/p-181015.jpg",
+                            YerBilgisi = "B840-R5-S8",
+                            Ozet = "İhtiyaçları fazlalaşan insanlar, kaynakların sınırlarını zorlamaya itilir ve yollarına çıkan savunmasız birinden bile irkilir. İş ve ücretler, yiyecek ve barınma, cesaret ve iyi niyet; hepsi sahip olamadıkları şeylerdir. Işık gölgeye dönüşür ve karanlık yüreklerini doldurur. Bu karanlık, insanın içindeki zayıflığı ele geçirir ve onu utanç verici işlere zorlar. Artık hiçbir dehşet veya korku dışlanmaz. Ümitsizlik ve çaresizlikle hepsi kötülük ve suça yönelir... Hepsi sefilleşmiş, bozulmuş birer pislik gibi gözükür. Fakat o denli alçalmış kişilerin de daha fazla alçalamayacağı bir çizgi vardır ve bu dönüm noktasında, dış dünya adeta yutar bu zavallı, talihsiz, kimliksiz insanları... Onlar Sefiller’dir; toplumdan dışlananlar...<br>\"Bana Sefiller kitabının tüm halklar için yazılmış olduğunu söylerken haklısınız. Sosyal sorunlar sınırları aşıyor. İnsan soyunun yaraları, yeryüzünü kaplayan o geniş yaralar, haritalardaki o mavi ya da kırmızı çizgilerde durmuyor hiç. İnsanoğlunun bilgisizlik ve umutsuzluk içinde bulunduğu, çocuğun kendisini eğitecek bir kitap ve ısıtacak bir ocak bulamadığı için acı çektiği her yerde Sefiller kapıyı çalar ve şöyle der: ‘Sizin için geliyorum! Açın kapıyı bana!’ Uygarlığın, içinde yaşadığımız şu alabildiğine karanlık saatinde, sefilin adı ‘insan’dır. O insan, bütün iklimlerde can çekişiyor ve bütün dillerde inliyor. Elimden geleni yapıyorum. Evrensel acıyla acı çekiyor ve onu hafifletebilmek için çalışıyorum. Elimdeki güç, bir insanın çok zayıf gücü; öyle olduğu için de herkese haykırıyorum: Yardım edin bana!\" Victor Hugo"
                         }, new Kitap()
                         {
                             Ad = "Küçük Prens",
@@ -272,8 +273,8 @@ namespace KutuphaneOtomasyonu.Data
                             TeminBicimi = "Satın Alma",
                             DemirbasNo = "0000002",
                             ISBN = "9786054985327",
-                            KapakResmi = "https://img.kitapyurdu.com/v1/getImage/fn:11468334/wh:true/wi:220",
-                            YerBilgisi = "B840-R5-S9",                            
+                            KapakResmi = "https://www.mucitpanda.com/productimages/110808/big/9786058002845_kucuk_prens.jpg",
+                            YerBilgisi = "B840-R5-S9",
                         }, new Kitap()
                         {
                             Ad = "Dönüşüm",
@@ -291,10 +292,10 @@ namespace KutuphaneOtomasyonu.Data
                             TeminBicimi = "Satın Alma",
                             DemirbasNo = "0000003",
                             ISBN = "9786054985323",
-                            KapakResmi = "https://img.kitapyurdu.com/v1/getImage/fn:11482567/wh:true/wi:220",
+                            KapakResmi = "https://www.panelkirtasiye.com/productimages/411666/big/9789750518959_1.jpg",
                             YerBilgisi = "B840-R5-S7"
                         },
-                    });
+                    }); 
 
                     context.SaveChanges();
                 }
