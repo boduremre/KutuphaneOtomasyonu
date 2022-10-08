@@ -24,19 +24,19 @@ namespace KutuphaneOtomasyonu.Models
         [Required]
         [Display(Name = "Alış Tarihi")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
 
         public DateTime AlisTarihi { get; set; }
 
         [Required]
         [Display(Name = "Getireceği Tarih")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime GetirecegiTarih { get; set; }
 
         [Display(Name = "Getirdiği Tarih")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         public DateTime? GetirdigiTarih { get; set; }
     }
 }
