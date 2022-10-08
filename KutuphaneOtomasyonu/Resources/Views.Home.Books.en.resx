@@ -120,6 +120,9 @@
   <data name="Books" xml:space="preserve">
     <value>Books</value>
   </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>DESCRIPTION</value>
+  </data>
   <data name="Detay" xml:space="preserve">
     <value>Detail</value>
   </data>

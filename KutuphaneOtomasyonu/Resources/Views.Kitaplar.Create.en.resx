@@ -174,6 +174,9 @@
   <data name="OrjinalAd" xml:space="preserve">
     <value>Orginal Name</value>
   </data>
+  <data name="Ozet" xml:space="preserve">
+    <value>Summary</value>
+  </data>
   <data name="SatinAlma" xml:space="preserve">
     <value>Buy</value>
   </data>

@@ -120,6 +120,9 @@
   <data name="Book" xml:space="preserve">
     <value>Kitaplar</value>
   </data>
+  <data name="DESCRIPTION" xml:space="preserve">
+    <value>TANIM</value>
+  </data>
   <data name="Duzenle" xml:space="preserve">
     <value>Düzenle</value>
   </data>

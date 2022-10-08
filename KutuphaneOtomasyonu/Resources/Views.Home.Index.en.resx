@@ -126,6 +126,9 @@
   <data name="KutuphaneOtomasyonu" xml:space="preserve">
     <value>Library Automation</value>
   </data>
+  <data name="Quotes" xml:space="preserve">
+    <value>QUOTATIONS</value>
+  </data>
   <data name="Slogan" xml:space="preserve">
     <value>Manage your books. &lt;br&gt;Lend it to your students.</value>
   </data>

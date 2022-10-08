@@ -126,6 +126,9 @@
   <data name="KutuphaneOtomasyonu" xml:space="preserve">
     <value>Kütüphane Otomasyonu</value>
   </data>
+  <data name="Quotes" xml:space="preserve">
+    <value>ÖZLÜ SÖZLER</value>
+  </data>
   <data name="Slogan" xml:space="preserve">
     <value>Kitaplarınızı yönetin. &lt;br&gt;Öğrencilerinize ödünç verin.</value>
   </data>
