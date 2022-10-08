@@ -87,5 +87,8 @@ namespace KutuphaneOtomasyonu.Models
 
         [Display(Name = "Ödünç Adet")]
         public int OduncAdet { get; set; } = 0;
+
+        [Display(Name = "Özet")]
+        public string Ozet { get; set; }
     }
 }
