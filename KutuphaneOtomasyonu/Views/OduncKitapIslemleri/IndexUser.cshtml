@@ -16,10 +16,19 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Kitap.KitapId) / @Html.DisplayNameFor(model => model.Kitap.Barkod) / @Html.DisplayNameFor(model => model.Kitap.Ad) / @Localizer["Yazar"] / @Html.DisplayNameFor(model => model.Kitap.Yayinevi.Adi)
+                                    @Html.DisplayNameFor(model => model.Kitap.KitapId)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.User)
+                                    @Html.DisplayNameFor(model => model.Kitap.Barkod)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Kitap.Ad)
+                                </th>
+                                <th>
+                                    @Localizer["Yazar"]
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Kitap.Yayinevi.Adi)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.AlisTarihi)
@@ -30,6 +39,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.GetirdigiTarih)
                                 </th>
+                                <th>Durum</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,10 +47,19 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Kitap.KitapId) / @Html.DisplayFor(modelItem => item.Kitap.Barkod) / @Html.DisplayFor(modelItem => item.Kitap.Ad) / @Html.DisplayFor(modelItem => item.Kitap.Yazar.Ad) @Html.DisplayFor(modelItem => item.Kitap.Yazar.Soyad) / @Html.DisplayFor(modelItem => item.Kitap.Yayinevi.Adi)
+                                        @Html.DisplayFor(modelItem => item.Kitap.KitapId)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.User.Adi) @Html.DisplayFor(modelItem => item.User.Soyadi) (@Html.DisplayFor(modelItem => item.User.Email))
+                                        @Html.DisplayFor(modelItem => item.Kitap.Barkod)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kitap.Ad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kitap.Yazar.Ad) @Html.DisplayFor(modelItem => item.Kitap.Yazar.Soyad)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Kitap.Yayinevi.Adi)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.AlisTarihi)
@@ -50,6 +69,31 @@
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.GetirdigiTarih)
+                                    </td>
+                                    <td>
+                                        @if (item.GetirdigiTarih == null)
+                                        {
+
+                                            TimeSpan arasindakiGunler = DateTime.Now - item.GetirecegiTarih;
+                                            if (item.GetirdigiTarih == null && item.GetirecegiTarih < DateTime.Now)
+                                            {
+                                                <div class="label label-table label-danger">
+                                                   @Math.Floor(arasindakiGunler.TotalDays).ToString() @Localizer["GunGecikti"]
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="label label-table label-success">
+                                                   @Math.Abs(Math.Floor(arasindakiGunler.TotalDays)).ToString() @Localizer["GunKaldi"]
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                           <div class="label label-table label-success">
+                                                Teslim Edildi
+                                            </div>
+                                        }
                                     </td>
                                 </tr>
                             }
