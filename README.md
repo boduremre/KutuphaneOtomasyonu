@@ -36,6 +36,7 @@ Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bi
 - [X] DbInitializer eklenecek. 
 - [X] Çoklu Dil desteği eklenecek.
 - [X] Frontend eklenecek.
+- [ ] https://openlibrary.org/dev/docs/api/books adresinden kitap bilgileri getirilecek.
 - [ ] Yetkilendirme ayarlanacak.
 - [ ] Faker kütüphanesini eklenecek.
 - [ ] Uygulama test edilecek.
