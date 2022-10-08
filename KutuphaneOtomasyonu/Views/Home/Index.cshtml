@@ -6,9 +6,10 @@
     ViewData["Title"] = Localizer["Anasayfa"];
 }
 
-<!--=================================
-       Hero Area
-       ===================================== -->
+<!--
+=================================
+       Slider Area
+===================================== -->
 <section class="hero-area hero-slider-2">
     <div class="container">
         <div class="row align-items-lg-center">
@@ -28,7 +29,7 @@
                                     <p>
                                         @Localizer["Slogan"]
                                     </p>
-                                    <a asp-action="Index" asp-controller="Kitaplar" class="btn btn-outlined--primary">
+                                    <a asp-action="Books" asp-controller="Home" class="btn btn-outlined--primary">
                                         @Localizer["KitaplariIncele"]
                                     </a>
                                 </div>
@@ -46,8 +47,9 @@
         </div>
     </div>
 </section>
-<!--=================================
-Deal of the day
+<!--
+=================================
+            BOOK LISTS
 ===================================== -->
 <section class="section-margin">
     <div class="container">
@@ -80,10 +82,24 @@ Deal of the day
                         </div>
                         <div class="product-card--body">
                             <div class="card-image">
-                                <img src="@kitap.KapakResmi" alt="">
+                                @if (!string.IsNullOrEmpty(kitap.KapakResmi))
+                                {
+                                    <img src="@kitap.KapakResmi" alt="">
+                                }
+                                else
+                                {
+                                    <img src="images/books/default.jpg" alt="">
+                                }
                                 <div class="hover-contents">
                                     <a asp-controller="Home" asp-action="BookDetail" asp-route-id="@kitap.KitapId" class="hover-image">
-                                        <img src="@kitap.KapakResmi" alt="">
+                                        @if (!string.IsNullOrEmpty(kitap.KapakResmi))
+                                        {
+                                            <img src="@kitap.KapakResmi" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img src="images/books/default.jpg" alt="">
+                                        }
                                     </a>
                                     @*<div class="hover-btns">
                                             <a href="cart.html" class="single-btn">
@@ -109,4 +125,110 @@ Deal of the day
         </div>
     </div>
 </section>
+<!--
+=================================
+        Quotes
+===================================== -->
+<section class="section-margin">
+    <div class="container">
+        <div class="section-title section-title--bordered mb-lg--60">
+            <h2>@Localizer["Quotes"]</h2>
+        </div>
+        <div class="sb-slick-slider testimonial-slider" data-slick-setting='{
+                "autoplay": true,
+                "autoplaySpeed": 8000,
+                "slidesToShow":3,
+                "dots":true
+            }' data-slick-responsive='[
+                {"breakpoint":1200, "settings": {"slidesToShow": 2} },
+                {"breakpoint":992, "settings": {"slidesToShow": 1} },
+                {"breakpoint":768, "settings": {"slidesToShow": 1} },
+                {"breakpoint":490, "settings": {"slidesToShow": 1} }
+            ]'>
 
+            @{
+                // https://gist.github.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80
+            }
+            <div class="single-slide">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="/images/others/client-1.png" alt="">
+                    </div>
+                    <div class="testimonial-body">
+                        <article>
+                            <h2 class="sr-only">Quotes</h2>
+                            <p>
+                                Başarılı olmaya değil, değerli olmaya çalışın.
+                            </p>
+                            <span class="d-block client-name">Albert Einstein</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slide">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="/images/others/client-1.png" alt="">
+                    </div>
+                    <div class="testimonial-body">
+                        <article>
+                            <h2 class="sr-only">Quotes</h2>
+                            <p>
+                                İnsan aklı neyi kavrar ve inanırsa onu başarabilir.
+                            </p>
+                            <span class="d-block client-name">Napoleon Hill</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slide">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="/images/others/client-1.png" alt="">
+                    </div>
+                    <div class="testimonial-body">
+                        <article>
+                            <h2 class="sr-only">Quotes</h2>
+                            <p>
+                                Sorgulanmamış bir hayat yaşamaya değmez.
+                            </p>
+                            <span class="d-block client-name">Sokrates</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slide">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="/images/others/client-1.png" alt="">
+                    </div>
+                    <div class="testimonial-body">
+                        <article>
+                            <h2 class="sr-only">Quotes</h2>
+                            <p>
+                                Eğitimin kökleri acı meyveleri tatlıdır.
+                            </p>
+                            <span class="d-block client-name">Aristo</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slide">
+                <div class="testimonial-card">
+                    <div class="testimonial-image">
+                        <img src="/images/others/client-1.png" alt="">
+                    </div>
+                    <div class="testimonial-body">
+                        <article>
+                            <h2 class="sr-only">Quotes</h2>
+                            <p>
+                                Hayatta en hakiki mürşit ilimdir.
+                            </p>
+                            <span class="d-block client-name">Mustafa Kemal Atatürk</span>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

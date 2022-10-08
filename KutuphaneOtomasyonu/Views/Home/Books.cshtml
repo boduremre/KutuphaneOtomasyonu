@@ -22,39 +22,31 @@
 </section>
 <main class="inner-page-sec-padding-bottom">
     <div class="container">
-        <div class="shop-product-wrap list with-pagination row space-db--30 shop-border">
+
+        <div class="shop-product-wrap grid-four with-pagination row space-db--30 shop-border">
             @foreach (var item in Model)
             {
                 <div class="col-lg-4 col-sm-6">
-                    <div class="product-card card-style-list">
-                        <div class="product-list-content">
-                            <div class="card-image">
-                                <img src="@item.KapakResmi" alt="">
+                    <div class="product-card">
+                        <div class="product-grid-content">
+                            <div class="product-header">
+                                <a href="javascript:void()" class="author">
+                                    @item.Yazar.Ad @item.Yazar.Soyad
+                                </a>
+                                <h3>
+                                    <a asp-controller="Home" asp-action="BookDetail" asp-route-id="@item.KitapId" tabindex="0">
+                                        @item.Ad
+                                    </a>
+                                </h3>
                             </div>
                             <div class="product-card--body">
-                                <div class="product-header">
-                                    <a href="javascript:void()" class="author">
-                                        @item.Yazar.Ad @item.Yazar.Soyad
+                                <div class="card-image">
+                                    <a asp-controller="Home" asp-action="BookDetail" asp-route-id="@item.KitapId" tabindex="0">
+                                        <img src="@item.KapakResmi" alt="">
                                     </a>
-                                    <h3>
-                                        <a asp-controller="Home" asp-action="BookDetail" asp-route-id="@item.KitapId" tabindex="0">
-                                           @item.Ad
-                                        </a>
-                                    </h3>
                                 </div>
-                                <article>
-                                    <h2 class="sr-only">Card List Article</h2>
-                                    <p>
-                                        More room to move. With 80GB or 160GB of storage and up to 40 hours of
-                                        battery life, the new iPod classic
-                                        lets you enjoy
-                                        up to 40,000 songs or..
-                                    </p>
-                                </article>
-                                <div class="price-block">
-                                    <span class="price">#0</span>
-                                </div>
-                                <div class="rating-block">
+                                
+                                @*<div class="rating-block">
                                     <span class="fas fa-star star_on"></span>
                                     <span class="fas fa-star star_on"></span>
                                     <span class="fas fa-star star_on"></span>
@@ -62,10 +54,10 @@
                                     <span class="fas fa-star "></span>
                                 </div>
                                 <div class="btn-block">
-                                    <a href="" class="btn btn-outlined">Add To Cart</a>
-                                    <a href="" class="card-link"><i class="fas fa-heart"></i> Add To Wishlist</a>
-                                    <a href="" class="card-link"><i class="fas fa-random"></i> Add To Cart</a>
-                                </div>
+                                    <a asp-controller="Home" asp-action="BookDetail" asp-route-id="@item.KitapId" class="btn btn-outlined">
+                                        @Localizer["Detay"]
+                                    </a>
+                                </div>*@
                             </div>
                         </div>
                     </div>
@@ -73,7 +65,7 @@
             }
         </div>
         <!-- Pagination Block -->
-        <div class="row pt--30">
+        @*<div class="row pt--30">
             <div class="col-md-12">
                 <div class="pagination-block">
                     <ul class="pagination-btns flex-center">
@@ -93,6 +85,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 </main>

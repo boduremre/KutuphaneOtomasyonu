@@ -56,12 +56,24 @@
                         <li>@Html.DisplayNameFor(model => model.Yazar.Ad): <span class="list-value"> @Model.Yazar.Ad @Model.Yazar.Soyad</span></li>
                         <li>@Html.DisplayNameFor(model => model.Yayinevi.Adi): <span class="list-value"> @Model.Yayinevi.Adi</span></li>
                     </ul>
-                    <article class="product-details-article">
-                        <h4 class="sr-only">Product Summery</h4>
+                </div>
+            </div>
+        </div>
+        <div class="sb-custom-tab review-tab section-padding">
+            <ul class="nav nav-tabs nav-style-2" id="myTab2" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="tab1" data-toggle="tab" href="#tab-1" role="tab"
+                       aria-controls="tab-1" aria-selected="true">
+                        @Localizer["DESCRIPTION"]
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content space-db--20" id="myTabContent">
+                <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="tab1">
+                    <article class="review-article">
+                        <h1 class="sr-only">@Html.DisplayNameFor(model => model.Ozet)</h1>
                         <p>
-                            Long printed dress with thin adjustable straps. V-neckline and wiring under the Dust
-                            with ruffles at the bottom of the
-                            dress.
+                            @Model.Ozet
                         </p>
                     </article>
                 </div>
