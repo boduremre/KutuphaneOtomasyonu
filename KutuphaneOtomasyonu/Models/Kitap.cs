@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -56,10 +57,6 @@ namespace KutuphaneOtomasyonu.Models
         public float? EdinmeBedeli { get; set; }
 
         [Required]
-        [Display(Name = "Kayıt Tarihi")]
-        DateTime KayitTarihi { get; set; } = DateTime.Now;
-
-        [Required]
         [Display(Name = "Demirbaş")]
         public string DemirbasNo { get; set; }
 
@@ -82,13 +79,23 @@ namespace KutuphaneOtomasyonu.Models
         public int YayineviId { get; set; }
         public Yayinevi Yayinevi { get; set; }
 
-        [Display(Name = "Kapak Resmi (Resim URL Giriniz)")]
+        [Display(Name = "Kapak Resmi")]
         public string KapakResmi { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Görsel Seçiniz")]
+        public IFormFile Image { get; set; }
 
         [Display(Name = "Ödünç Adet")]
         public int OduncAdet { get; set; } = 0;
 
         [Display(Name = "Özet")]
         public string Ozet { get; set; }
+
+        [Display(Name = "Kayıt Tarihi")]
+        public DateTime KayitTarihi { get; set; } = DateTime.Now;
+
+        [Display(Name = "Güncelleme Tarihi")]
+        public DateTime GuncellemeTarihi { get; set; }
     }
 }

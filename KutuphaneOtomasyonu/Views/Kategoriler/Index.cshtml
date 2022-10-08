@@ -44,17 +44,51 @@
     </div>
 </div>
 @section Scripts {
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () {
             $('#tblKategoriler').DataTable({
                 language: {
                     url: '//cdn.datatables.net/plug-ins/1.11.3/i18n/tr.json'
                 },
+                autoWidth: true,
                 dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
+                buttons: [ // https://stackoverflow.com/questions/33932055/exclude-hide-some-columns-while-export-datatable
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        footer: false,
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        footer: false,
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        footer: false,
+                        exportOptions: {
+                            columns: [0, 1]
+                        }
+                    }
                 ]
             });
+        });
         });
     </script>
 }

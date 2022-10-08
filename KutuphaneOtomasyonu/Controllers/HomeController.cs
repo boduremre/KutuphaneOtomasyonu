@@ -23,7 +23,7 @@ namespace KutuphaneOtomasyonu.Controllers
         public IActionResult Index()
         {
             //ViewBag.Categories = _context.Kategoriler.OrderBy(x => x.KategoriAdi).ToList();
-            ViewBag.Kitaplar = _context.Kitaplar.Include(x => x.Yazar).Include(x => x.Kategori).ToList();
+            ViewBag.Kitaplar = _context.Kitaplar.Include(x => x.Yazar).Include(x => x.Kategori).OrderByDescending(o => o.KayitTarihi).ToList();
             return View();
         }
 

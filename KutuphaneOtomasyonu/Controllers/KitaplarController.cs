@@ -1,6 +1,8 @@
 ﻿using KutuphaneOtomasyonu.Data;
+using KutuphaneOtomasyonu.Helper;
 using KutuphaneOtomasyonu.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -66,13 +68,26 @@ namespace KutuphaneOtomasyonu.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create([Bind("KitapId,Ad,OzgunAd,SayfaSayisi,Adet,BaskiYili,Dil,Barkod,ISBN,Ceviren,TeminBicimi,EdinmeBedeli,YazarId,KategoriId,YayineviId,KapakResmi,DemirbasNo,YerBilgisi")] Kitap kitap)
+        public async Task<IActionResult> Create([Bind("KitapId,Ad,OzgunAd,SayfaSayisi,Adet,BaskiYili,Dil,Barkod,ISBN,Ceviren,TeminBicimi,EdinmeBedeli,YazarId,KategoriId,YayineviId,KapakResmi,DemirbasNo,YerBilgisi")] Kitap kitap, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(kitap);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (Image != null)
+                {
+                    string ImagePath = ImageUploadHelper.UploadImage(Image, "books");
+                    if (ImagePath != null)
+                    {
+                        kitap.KapakResmi = ImagePath;
+                        _context.Add(kitap);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Resim yüklenemedi!");
+                        return View(kitap);
+                    }
+                } 
             }
 
             ViewData["KategoriId"] = new SelectList(_context.Kategoriler, "KategoriId", "KategoriAdi", kitap.KategoriId);
