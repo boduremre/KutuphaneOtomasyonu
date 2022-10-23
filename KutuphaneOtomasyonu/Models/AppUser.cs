@@ -27,7 +27,7 @@ namespace KutuphaneOtomasyonu.Models
         public DateTime DogumTarihi { get; set; }
 
         [MaxLength(11)]
-        [Display(Name = "T.C.")]
+        [Display(Name = "Sistem ID (11 Hane)")]
         public string TCKimlik { get; set; }
 
         [Required]

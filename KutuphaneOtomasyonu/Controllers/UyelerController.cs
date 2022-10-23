@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class UyelerController : Controller
     {
         private readonly KutuphaneDbContext _context;

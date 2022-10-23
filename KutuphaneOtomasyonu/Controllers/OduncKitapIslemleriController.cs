@@ -190,7 +190,11 @@ namespace KutuphaneOtomasyonu.Controllers
             int status = _context.SaveChanges();
             if (status > 0)
             {
-                _context.Kitaplar.Find(oduncKitap.KitapId).OduncAdet--;
+                if (_context.Kitaplar.Find(oduncKitap.KitapId).OduncAdet == 0)
+                    _context.Kitaplar.Find(oduncKitap.KitapId).OduncAdet = 0;
+                else
+                    _context.Kitaplar.Find(oduncKitap.KitapId).OduncAdet--;
+
                 _context.SaveChanges();
                 return Json("true");
             }

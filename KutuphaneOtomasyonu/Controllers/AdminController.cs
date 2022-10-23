@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace KutuphaneOtomasyonu.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly KutuphaneDbContext _context;
@@ -33,6 +33,9 @@ namespace KutuphaneOtomasyonu.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
+            if (!User.IsInRole("Admin"))
+                RedirectToAction("IndexUser", "OduncKitapIslemleri");
+
             ViewData["UyeSayisi"] = _context.Users.Count();
             ViewData["KitapSayisi"] = _context.Kitaplar.Count();
             ViewData["OduncKitapSayisi"] = _context.OduncKitaplar.Count();
@@ -40,7 +43,6 @@ namespace KutuphaneOtomasyonu.Controllers
             ViewData["SonKaydedilenKitaplar"] = _context.Kitaplar.Include(o => o.Yazar).Include(o => o.Kategori).OrderByDescending(x => x.KitapId).Take(5).ToList();
             ViewData["OduncVerilen10Kitap"] = _context.OduncKitaplar.Include(o => o.Kitap).Include(o => o.User).Where(x => x.GetirdigiTarih == null).Take(10).ToList();
             ViewData["SonKayitOlan10Uye"] = _context.Users.Take(10).OrderByDescending(x => x.KayitTarihi).ToList();
-
             return View();
         }
 

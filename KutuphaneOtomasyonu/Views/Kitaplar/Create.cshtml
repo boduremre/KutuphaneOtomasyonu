@@ -15,6 +15,11 @@
                     <form asp-action="Create" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
+                            <label asp-for="ISBN" class="control-label">@Localizer["ISBN"]</label>
+                            <input asp-for="ISBN" class="form-control" value="9786050905700" />
+                            <span asp-validation-for="ISBN" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
                             <label asp-for="Ad" class="control-label">@Localizer["Ad"]</label>
                             <input asp-for="Ad" class="form-control" />
                             <span asp-validation-for="Ad" class="text-danger"></span>
@@ -59,11 +64,6 @@
                             <label asp-for="Barkod" class="control-label">@Localizer["Barkod"]</label>
                             <input asp-for="Barkod" class="form-control" maxlength="13" data-mask="9999999999999" />
                             <span asp-validation-for="Barkod" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="ISBN" class="control-label">@Localizer["ISBN"]</label>
-                            <input asp-for="ISBN" class="form-control" />
-                            <span asp-validation-for="ISBN" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Ceviren" class="control-label">@Localizer["Ceviren"]</label>
@@ -128,5 +128,36 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#ISBN').on("keypress", function (e) {
+                let isbn = $(this).val();
+                if (e.keyCode == 13) {
+                    $.ajax({
+                        url: 'https://openlibrary.org/api/books?bibkeys=ISBN:' + isbn + '&jscmd=details&format=json',
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data)
+                            if (Object.keys(data).length === 0) {
+                                swal("Hata!", "Kitap Bilgileri Bulunamadı! Kitabı manuel olarak ekleyiniz", "error", { button: "Tamam" });
+                            } else {
+                                $.each(data, function (isbn, book) {
+                                    $('#Ad').val(book.details.title)
+                                    $('#OzgunAd').val(book.details.title)
+                                });
+                            }
+                        },
+                        error: function (err) {
+                            swal("İstek Esnasında Bir Hata Oluştu!", err, "error", { button: "Tamam" });
+                        }
+                    });
+
+                    return false; // prevent the button click from happening
+                }
+            });
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
