@@ -139,7 +139,7 @@
                         success: function (data) {
                             console.log(data)
                             if (Object.keys(data).length === 0) {
-                                swal("Hata!", "Kitap Bilgileri Bulunamadı! Kitabı manuel olarak ekleyiniz", "error", { button: "Tamam" });
+                                sa_error("Hata!", "Kitap Bilgileri Bulunamadı!<br>Kitabı manuel olarak ekleyiniz");
                             } else {
                                 $.each(data, function (isbn, book) {
                                     $('#Ad').val(book.details.title)
@@ -148,7 +148,8 @@
                             }
                         },
                         error: function (err) {
-                            swal("İstek Esnasında Bir Hata Oluştu!", err, "error", { button: "Tamam" });
+                            swal_alert()
+                            //swal("İstek Esnasında Bir Hata Oluştu!", err, "error", { button: "Tamam" });
                         }
                     });
 
