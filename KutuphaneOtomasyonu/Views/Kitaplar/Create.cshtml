@@ -6,6 +6,10 @@
     ViewData["Title"] = Localizer["KitapEkle"];
 }
 
+@section Styles{
+    <link href="~/plugins/select2/select2.min.css" rel="stylesheet" />
+}
+
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
@@ -16,8 +20,13 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="ISBN" class="control-label">@Localizer["ISBN"]</label>
-                            <input asp-for="ISBN" class="form-control" value="9786050905700" />
+                            <input asp-for="ISBN" class="form-control" />
                             <span asp-validation-for="ISBN" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Barkod" class="control-label">@Localizer["Barkod"]</label>
+                            <input asp-for="Barkod" class="form-control" maxlength="13" data-mask="9999999999999" />
+                            <span asp-validation-for="Barkod" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Ad" class="control-label">@Localizer["Ad"]</label>
@@ -31,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="YazarId" class="control-label">@Localizer["YazarId"]</label>
-                            <select asp-for="YazarId" class="form-control" asp-items="ViewBag.YazarId"></select>
+                            <select asp-for="YazarId" class="form-control select2" asp-items="ViewBag.YazarId"></select>
                         </div>
                         <div class="form-group">
                             <label asp-for="SayfaSayisi" class="control-label">@Localizer["SayfaSayisi"]</label>
@@ -39,9 +48,12 @@
                             <span asp-validation-for="SayfaSayisi" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="Adet" class="control-label">@Localizer["Adet"]</label>
-                            <input asp-for="Adet" class="form-control" />
-                            <span asp-validation-for="Adet" class="text-danger"></span>
+                            <label asp-for="YayineviId" class="control-label">@Localizer["YayineviId"]</label>
+                            <select asp-for="YayineviId" class="form-control select2" asp-items="ViewBag.YayineviId"></select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="KategoriId" class="control-label">@Localizer["KategoriId"]</label>
+                            <select asp-for="KategoriId" class="form-control select2" asp-items="ViewBag.KategoriId"></select>
                         </div>
                         <div class="form-group">
                             <label asp-for="BaskiYili" class="control-label">@Localizer["BaskiYili"]</label>
@@ -49,9 +61,19 @@
                             <span asp-validation-for="BaskiYili" class="text-danger"></span>
                         </div>
                         <div class="form-group">
+                            <label asp-for="Adet" class="control-label">@Localizer["Adet"]</label>
+                            <input asp-for="Adet" class="form-control" />
+                            <span asp-validation-for="Adet" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="YerBilgisi" class="control-label">@Localizer["YerBilgisi"]</label> (B: Bölüm, R: Raf, S: Sıra, <a href="https://www.library.illinois.edu/infosci/research/guides/dewey/" target="_blank">@Localizer["DetayliBilgi"]</a>)
+                            <input asp-for="YerBilgisi" class="form-control" data-mask="B999-R999-S999" />
+                            <span asp-validation-for="YerBilgisi" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
                             <label asp-for="Dil" class="control-label">@Localizer["Dil"]</label>
-                            <select asp-for="Dil" class="form-control">
-                                <option value="Türkçe">@Localizer["Turkce"]</option>
+                            <select asp-for="Dil" class="form-control select2">
+                                <option value="Türkçe" selected>@Localizer["Turkce"]</option>
                                 <option value="İngilizce">@Localizer["Ingilizce"]</option>
                                 <option value="Fransızca">@Localizer["Fransizca"]</option>
                                 <option value="Latince">@Localizer["Latince"]</option>
@@ -59,11 +81,6 @@
                                 <option value="Farsça">@Localizer["Farsca"]</option>
                             </select>
                             <span asp-validation-for="Dil" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Barkod" class="control-label">@Localizer["Barkod"]</label>
-                            <input asp-for="Barkod" class="form-control" maxlength="13" data-mask="9999999999999" />
-                            <span asp-validation-for="Barkod" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="Ceviren" class="control-label">@Localizer["Ceviren"]</label>
@@ -89,11 +106,6 @@
                             <span asp-validation-for="DemirbasNo" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label asp-for="YerBilgisi" class="control-label">@Localizer["YerBilgisi"]</label> (B: Bölüm, R: Raf, S: Sıra, <a href="https://www.library.illinois.edu/infosci/research/guides/dewey/" target="_blank">@Localizer["DetayliBilgi"]</a>)
-                            <input asp-for="YerBilgisi" class="form-control" data-mask="B999-R999-S999" />
-                            <span asp-validation-for="YerBilgisi" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
                             <label asp-for="KapakResmi" class="control-label">@Localizer["KapakResmi"]</label>
                             <input asp-for="KapakResmi" class="form-control" />
                             <span asp-validation-for="KapakResmi" class="text-danger"></span>
@@ -103,14 +115,7 @@
                             <input asp-for="Image" class="form-control" accept="image/png, image/jpeg" />
                             <span asp-validation-for="Image" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="KategoriId" class="control-label">@Localizer["KategoriId"]</label>
-                            <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.KategoriId"></select>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="YayineviId" class="control-label">@Localizer["YayineviId"]</label>
-                            <select asp-for="YayineviId" class="form-control" asp-items="ViewBag.YayineviId"></select>
-                        </div>
+
                         <div class="form-group">
                             <label asp-for="Ozet" class="control-label">@Localizer["Ozet"]</label>
                             <textarea asp-for="Ozet" class="form-control"></textarea>
@@ -128,9 +133,15 @@
 </div>
 
 @section Scripts {
+    <script src="~/plugins/select2/select2.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#ISBN').on("keypress", function (e) {
+            $('.select2').select2({
+                placeholder: 'Seçiniz...',
+                tags: true
+            });
+
+            /*$('#ISBN').on("keypress", function (e) {
                 let isbn = $(this).val();
                 if (e.keyCode == 13) {
                     $.ajax({
@@ -139,7 +150,7 @@
                         success: function (data) {
                             console.log(data)
                             if (Object.keys(data).length === 0) {
-                                sa_error("Hata!", "Kitap Bilgileri Bulunamadı!<br>Kitabı manuel olarak ekleyiniz");
+                                sa_error("Kitap Bilgileri Bulunamadı!", "Kitabı manuel olarak ekleyiniz");
                             } else {
                                 $.each(data, function (isbn, book) {
                                     $('#Ad').val(book.details.title)
@@ -155,7 +166,7 @@
 
                     return false; // prevent the button click from happening
                 }
-            });
+            });*/
         });
     </script>
     @{

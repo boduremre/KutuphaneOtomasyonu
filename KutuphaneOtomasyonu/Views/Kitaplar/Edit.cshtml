@@ -5,7 +5,9 @@
 @{
     ViewData["Title"] = Localizer["KitapBilgisiDuzenle"];
 }
-
+@section Styles{
+    <link href="~/plugins/select2/select2.min.css" rel="stylesheet" />
+}
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
@@ -42,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Dil" class="control-label">@Localizer["Dil"]</label>
-                            <select asp-for="Dil" class="form-control">
+                            <select asp-for="Dil" class="form-control select2">
                                 <option value="Türkçe">@Localizer["Turkce"]</option>
                                 <option value="İngilizce">@Localizer["Ingilizce"]</option>
                                 <option value="Fransızca">@Localizer["Fransizca"]</option>
@@ -97,17 +99,17 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="YazarId" class="control-label">@Localizer["YazarId"]</label>
-                            <select asp-for="YazarId" class="form-control" asp-items="ViewBag.YazarId"></select>
+                            <select asp-for="YazarId" class="form-control select2" asp-items="ViewBag.YazarId"></select>
                             <span asp-validation-for="YazarId" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="KategoriId" class="control-label">@Localizer["KategoriId"]</label>
-                            <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.KategoriId"></select>
+                            <select asp-for="KategoriId" class="form-control select2" asp-items="ViewBag.KategoriId"></select>
                             <span asp-validation-for="KategoriId" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <label asp-for="YayineviId" class="control-label">@Localizer["YayineviId"]</label>
-                            <select asp-for="YayineviId" class="form-control" asp-items="ViewBag.YayineviId"></select>
+                            <select asp-for="YayineviId" class="form-control select2" asp-items="ViewBag.YayineviId"></select>
                             <span asp-validation-for="YayineviId" class="text-danger"></span>
                         </div>
                         <div class="form-group">
@@ -122,6 +124,14 @@
 </div>
 
 @section Scripts {
+    <script src="~/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.select2').select2({
+                placeholder: 'Seçiniz...'
+            });
+        });
+    </script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 

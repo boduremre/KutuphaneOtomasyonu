@@ -166,7 +166,7 @@
     <value>Kategori Ekle</value>
   </data>
   <data name="KategoriId" xml:space="preserve">
-    <value>Kategori Id</value>
+    <value>Kategori</value>
   </data>
   <data name="KitapBilgisiDuzenle" xml:space="preserve">
     <value>Kitap Bilgisi Düzenle</value>
@@ -190,10 +190,10 @@
     <value>Türkçe</value>
   </data>
   <data name="YayineviId" xml:space="preserve">
-    <value>Yayınevi Id</value>
+    <value>Yayınevi</value>
   </data>
   <data name="YazarId" xml:space="preserve">
-    <value>Yazar Id</value>
+    <value>Yazar</value>
   </data>
   <data name="YerBilgisi" xml:space="preserve">
     <value>Yer Bilgisi</value>
