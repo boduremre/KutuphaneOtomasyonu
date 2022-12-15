@@ -1,5 +1,6 @@
 # 2021-2022 Güz Dönemi Web Programlama Dersi Proje Ödevi
 ### Kütüphane Otomasyon Uygulaması
+### Ödev 100 puan almıştır.
 
 ### Projenin Amacı
 Projenin amacı, Web Programlama dersinde teorik ve pratik olarak öğrenilen bilgilerin, gerçek bir probleme uygulanarak bu probleme çözüm üreten bir web projesi geliştirilmesidir. Bu kapsamda Asp.net Core 5 MVC kullanılarak Kütüphane Otomasyon Uygulaması geliştirilmiştir. Uygulama ile okul, halk kütüphanesi, işyeri gibi kurumların bünyesinde bulunan kütüphanelerdeki kitapların kayıtlarının tutulması ve kütüphane üyelerine kitapların ödünç verilmesi vb. işlemlerin gerçekleştirilmesi sağlanacaktır.
